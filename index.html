@@ -328,12 +328,13 @@ health <span class="ok">UP</span> · https://helpnest.kro.kr</pre>
           <li><span class="n">02</span>Python으로 공공데이터(심평원 약국정보 · 식약처 e약은요)를 <b>시드 SQL로 변환</b> — 약국 23,571곳 · 약품 4,784종</li>
           <li><span class="n">03</span>이상치에 강한 <b>대표가격</b>(IQR 제거 후 중앙값)과 가격 · 거리 · 최신성을 묶은 <b>추천 Score</b> 설계</li>
           <li><span class="n">04</span>제보가 들어올 때 해당 (약국, 약품)만 다시 계산하는 <b>통계 캐시 테이블</b></li>
-          <li><span class="n">05</span>PRD · DATABASE · API · ROADMAP 문서를 코드보다 먼저 확정</li>
+          <li><span class="n">05</span>JWT · Google OAuth2 인증, 가격 제보 · 관리자 통계 API</li>
+          <li><span class="n">06</span>PRD · DATABASE · API · ROADMAP 문서를 코드보다 먼저 확정</li>
         </ul>
         <div class="links">
           <a href="https://github.com/s-sujin-99/miniProject1" target="_blank" rel="noopener">docs ↗</a>
-          <a href="https://github.com/s-sujin-99/miniproject1-backend" target="_blank" rel="noopener">back ↗</a>
-          <a href="https://github.com/s-sujin-99/miniproject1-frontend" target="_blank" rel="noopener">front ↗</a>
+          <a href="https://github.com/s-sujin-99/miniproject1-backend/tree/main" target="_blank" rel="noopener">back ↗</a>
+          <a href="https://github.com/s-sujin-99/miniproject1-frontend/tree/main" target="_blank" rel="noopener">front ↗</a>
         </div>
       </div>
       <div class="arch">
@@ -406,15 +407,18 @@ public void retryFailed() {
       <li class="stack-item"><div class="stack-card">
         <div><p class="no">05 / 05</p><p class="q">제보 몇 건 중 오타 하나가 "최저가"를 바꿔 버린다면</p></div>
         <div class="side"><p class="lbl">해결</p>
-          <p class="a">제보가 3~5건뿐일 때 평균은 오타 한 건에 크게 흔들립니다. 그래서 대표가격은 <b>IQR로 이상치를 뺀 뒤 중앙값</b>으로 정하고, 평균은 화면 참고용으로만 씁니다. 추천은 가격만 보지 않고 <b>거리와 최신성</b>을 함께 반영합니다.</p>
-          <figure class="code"><figcaption>PRD.md · F3 최저가 추천</figcaption><pre>P_rep = median(제보 90일, IQR 1.5배 밖 제외)
-        # 0건이면 180일로 확대, 그래도 0건이면 후보 제외
+          <p class="a">제보가 3~5건뿐일 때 평균은 오타 한 건에 크게 흔들립니다. 그래서 대표가격은 <b>IQR로 이상치를 뺀 뒤 중앙값</b>으로 정하고, 평균은 화면 참고용으로만 씁니다. 추천은 가격만 보지 않고 <b>거리와 최신성</b>을 함께 반영하고, 점수가 같을 때도 순서가 흔들리지 않게 <b>정렬 기준을 끝까지</b> 정했습니다.</p>
+          <figure class="code"><figcaption>ScoreCalculatorImpl.java</figcaption><pre>// 후보가 1개뿐이거나 가격이 모두 같으면 0으로 나누기 → 1.0
+double priceScore = (maxPrice == minPrice) ? 1.0
+        : (double) (maxPrice - c.repPrice()) / (maxPrice - minPrice);
+double distanceScore = clamp(1 - c.distanceM() / radiusM, 0, 1);
+double freshnessScore = Math.pow(0.5, ageDays / (double) halfLifeDays);
 
-PriceScore     = (P_max - P_rep) / (P_max - P_min)
-DistanceScore  = clamp(1 - d / R, 0, 1)
-FreshnessScore = 0.5 ^ (age_days / 30)
-
-Score = 0.60·Price + 0.25·Distance + 0.15·Freshness</pre></figure>
+// score DESC → 가격 → 거리 → 약국 ID : 같은 입력이면 항상 같은 순서
+scored.sort(comparingDouble(ScoredCandidate::score).reversed()
+        .thenComparingInt(sc -> sc.candidate().repPrice())
+        .thenComparingDouble(sc -> sc.candidate().distanceM())
+        .thenComparingLong(sc -> sc.candidate().pharmacyId()));</pre></figure>
         </div></div></li>
     </ol>
   </div>
