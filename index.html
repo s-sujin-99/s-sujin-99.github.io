@@ -47,7 +47,7 @@
   .top { position: fixed; inset: 0 0 auto; z-index: 60; height: var(--head-h); background: rgba(7,17,20,.85); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
   .top .wrap { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
   .brand { display: flex; align-items: center; gap: 10px; line-height: 1.2; }
-  .brand svg { width: 40px; height: 40px; border-radius: 12px; background: rgba(20,184,166,.15); }
+  .brand i { width: 36px; height: 36px; border-radius: 10px; background: var(--primary); display: grid; place-items: center; color: #fff; font: 400 17px var(--display); font-style: normal; }
   .brand b { display: block; font-size: 15px; }
   .brand small { display: block; font-size: 12px; font-weight: 700; color: var(--mint); }
   .menu { display: flex; gap: 4px; font-size: 15px; font-weight: 600; }
@@ -256,7 +256,7 @@
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="#top"><svg viewBox="0 0 200 220" aria-hidden="true"><use href="#me" x="10" y="14" width="180" height="198"/></svg><span><b>Shin Sujin</b><small>Backend Developer</small></span></a>
+    <a class="brand" href="#top"><i>S</i><span><b>Shin Sujin</b><small>Backend Developer</small></span></a>
     <nav class="menu" id="menu" aria-label="섹션 이동">
       <a href="#about">Intro</a>
       <a href="#strengths">Philosophy</a>
