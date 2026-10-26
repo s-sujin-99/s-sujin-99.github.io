@@ -4,216 +4,262 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>신수진 · 백엔드 개발자 포트폴리오</title>
-<meta name="description" content="Java · Spring Boot 백엔드 개발자 신수진의 포트폴리오 겸 이력서. HelpNest AI 자동화 · AWS 배포.">
+<meta name="description" content="Java · Spring Boot 백엔드 개발자 신수진의 포트폴리오 겸 이력서. HelpNest AI 자동화 · AWS 배포, 우리동네약값 추천 로직.">
 <meta property="og:title" content="신수진 · 백엔드 개발자 포트폴리오">
 <meta property="og:description" content="AI를 서비스에 붙이고, 운영까지 책임지는 백엔드 개발자">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='9' fill='%230d9488'/><text x='16' y='22' font-size='15' font-weight='800' text-anchor='middle' fill='white' font-family='sans-serif'>S</text></svg>">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <script>document.documentElement.classList.add('js')</script>
 <style>
+  @font-face {
+    font-family: "JalnanGothic";
+    src: url("https://cdn.jsdelivr.net/gh/koreafonts/fonts@39b0dbea767dfbd60e71e3f450792d64536f7998/JalnanGothic/JalnanGothic.woff2") format("woff2");
+    font-display: swap;
+  }
   :root {
     --bg: #f4f6f7; --paper: #fff; --ink: #0b1418; --ink-2: #334155; --muted: #64748b; --line: #e2e7ea;
-    --primary: #0d9488; --primary-2: #14b8a6; --primary-soft: #e6f7f5;
-    --ai: #c026d3; --dark: #071114; --dark-line: rgba(255,255,255,.09);
-    --gutter: clamp(16px, 4.5vw, 88px); --ease: cubic-bezier(.2,.8,.2,1);
+    --primary: #0d9488; --primary-2: #14b8a6; --primary-soft: #e6f7f5; --mint: #5eead4;
+    --ai: #c026d3; --pink: #f0abfc;
+    --dark: #071114; --dark-2: #0c1a1e; --glass: rgba(16,38,42,.9); --glass-line: rgba(20,184,166,.3); --dark-line: rgba(255,255,255,.09);
+    --display: "JalnanGothic", "Pretendard Variable", Pretendard, sans-serif;
+    --gutter: clamp(16px, 4.5vw, 72px); --head-h: 72px; --ease: cubic-bezier(.2,.8,.2,1);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: var(--head-h); }
   body { font-family: "Pretendard Variable", Pretendard, "Malgun Gothic", system-ui, sans-serif; background: var(--bg); color: var(--ink);
-    font-size: 18px; line-height: 1.6; -webkit-font-smoothing: antialiased; word-break: keep-all; overflow-x: hidden; }
+    font-size: 17px; line-height: 1.65; -webkit-font-smoothing: antialiased; word-break: keep-all; overflow-x: hidden; }
   a { color: inherit; text-decoration: none; }
   b { font-weight: 750; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--primary-2); outline-offset: 3px; border-radius: 6px; }
   code { font-family: ui-monospace, Consolas, monospace; font-size: .88em; background: rgba(13,148,136,.1); color: var(--primary); padding: 1px 7px; border-radius: 6px; }
-  .wrap { width: min(1440px, 100%); margin: 0 auto; padding: 0 var(--gutter); }
-  .dark { background: var(--dark); color: #fff; }
-  section { padding: clamp(80px, 12vh, 140px) 0; position: relative; }
-
-  /* 진행 막대 · 내비 */
-  #bar { position: fixed; left: 0; top: 0; height: 3px; width: 100%; transform-origin: 0 50%; transform: scaleX(0); background: linear-gradient(90deg, var(--primary-2), var(--ai)); z-index: 60; }
-  .nav { position: fixed; top: 18px; left: 50%; transform: translateX(-50%); z-index: 50; display: flex; align-items: center; gap: 4px;
-    padding: 6px 6px 6px 18px; border-radius: 999px; background: rgba(255,255,255,.75); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
-    box-shadow: 0 10px 30px rgba(15,23,42,.12); font-size: 15px; font-weight: 650; white-space: nowrap; transition: background .3s, color .3s; }
-  .nav.on-dark { background: rgba(12,26,30,.7); color: #e2e8f0; }
-  .nav .logo { display: flex; align-items: center; gap: 8px; font-weight: 850; margin-right: 10px; }
-  .nav .logo i { width: 22px; height: 22px; border-radius: 7px; background: var(--primary); display: grid; place-items: center; color: #fff; font-style: normal; font-size: 12px; }
-  .nav a.lnk { padding: 7px 13px; border-radius: 999px; color: var(--muted); }
-  .nav.on-dark a.lnk { color: #94a3b8; }
-  .nav a.lnk.cur { color: var(--ink); background: rgba(15,23,42,.06); }
-  .nav.on-dark a.lnk.cur { color: #fff; background: rgba(255,255,255,.1); }
-  .nav a.live { margin-left: 6px; padding: 8px 16px; border-radius: 999px; background: var(--primary); color: #fff; }
-  @media (max-width: 900px) { .nav a.lnk { display: none; } }
+  .dark code { background: rgba(94,234,212,.12); color: var(--mint); }
+  .wrap { width: min(1200px, 100%); margin: 0 auto; padding: 0 var(--gutter); }
+  section { padding: clamp(80px, 11vh, 128px) 0; position: relative; }
+  .dark { background: var(--dark); color: #e2e8f0; }
+  .dark.alt { background: var(--dark-2); }
+  .glow::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(60% 50% at 50% 40%, rgba(13,148,136,.22), transparent 80%); }
+  .glow > .wrap { position: relative; }
 
   /* 등장 애니메이션 — JS 가 꺼져 있으면 그냥 보인다 */
-  .js .rv { opacity: 0; transform: translateY(26px); transition: opacity .9s var(--ease), transform .9s var(--ease); transition-delay: calc(var(--d, 0) * 1ms); }
-  .js .in .rv, .js .rv.in { opacity: 1; transform: none; }
-  @media (prefers-reduced-motion: reduce) { .js .rv { opacity: 1; transform: none; transition: none; } .hero::before, .marquee .track { animation: none !important; } }
+  .js .rv { opacity: 0; transform: translateY(24px); transition: opacity .8s var(--ease), transform .8s var(--ease); transition-delay: calc(var(--d, 0) * 1ms); }
+  .js .rv.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .js .rv { opacity: 1; transform: none; transition: none; } }
 
-  /* 라벨 · 제목 */
-  .eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--primary); }
-  .eyebrow .no { padding: 3px 10px; border-radius: 999px; background: var(--primary-soft); letter-spacing: .04em; }
-  .dark .eyebrow { color: #5eead4; } .dark .eyebrow .no { background: rgba(20,184,166,.18); }
-  h2.title { font-size: clamp(34px, 4.4vw, 72px); font-weight: 850; letter-spacing: -.045em; line-height: 1.12; margin-top: 16px; }
-  .intro { font-size: clamp(17px, 1.3vw, 21px); color: var(--ink-2); margin-top: 18px; max-width: 860px; }
+  /* 상단 고정 헤더 */
+  #bar { position: fixed; left: 0; top: 0; height: 3px; width: 100%; transform-origin: 0 50%; transform: scaleX(0); background: linear-gradient(90deg, var(--primary-2), var(--ai)); z-index: 70; }
+  .top { position: fixed; inset: 0 0 auto; z-index: 60; height: var(--head-h); background: rgba(7,17,20,.85); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--dark-line); color: #e2e8f0; }
+  .top .wrap { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .brand { display: flex; align-items: center; gap: 10px; line-height: 1.2; }
+  .brand i { width: 36px; height: 36px; border-radius: 10px; background: var(--primary); display: grid; place-items: center; color: #fff; font: 400 17px var(--display); font-style: normal; }
+  .brand b { display: block; font-size: 15px; color: #fff; }
+  .brand small { display: block; font-size: 12px; font-weight: 700; color: var(--mint); }
+  .menu { display: flex; gap: 4px; font-size: 15px; font-weight: 600; }
+  .menu a { padding: 8px 12px; border-radius: 8px; color: #94a3b8; transition: color .2s, background .2s; }
+  .menu a:hover, .menu a.cur { color: #fff; background: rgba(255,255,255,.07); }
+  .ask { padding: 9px 18px; border-radius: 10px; background: var(--primary-2); color: var(--dark); font-size: 14px; font-weight: 800; white-space: nowrap; }
+  .burger { display: none; width: 40px; height: 40px; border-radius: 10px; border: 1px solid var(--glass-line); background: none; color: #e2e8f0; cursor: pointer; font-size: 18px; }
+  @media (max-width: 900px) {
+    .burger { display: inline-grid; place-items: center; }
+    .menu { display: none; position: absolute; top: var(--head-h); left: 0; right: 0; flex-direction: column; padding: 12px var(--gutter) 18px; background: rgba(7,17,20,.97); border-bottom: 1px solid var(--dark-line); }
+    .menu.open { display: flex; }
+    .top .actions { display: flex; gap: 8px; align-items: center; }
+  }
+  .top .actions { display: flex; gap: 8px; align-items: center; }
+
+  /* 공통 머리말 */
+  .eyebrow { font-size: 13px; font-weight: 800; letter-spacing: .16em; text-transform: uppercase; color: var(--primary); }
+  .dark .eyebrow { color: var(--mint); }
+  h2.title { font: 400 clamp(30px, 3.6vw, 46px)/1.35 var(--display); letter-spacing: -.02em; margin-top: 12px; }
+  .dark h2.title { color: #fff; }
+  .intro { color: var(--ink-2); margin-top: 12px; max-width: 720px; }
   .dark .intro { color: #cbd5e1; }
+  .center { text-align: center; } .center .intro { margin-inline: auto; }
+  .grad { background: linear-gradient(90deg, var(--mint), var(--pink)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+
+  /* 유리 카드 (어두운 섹션) · 흰 카드 (밝은 섹션) */
+  .glass { background: var(--glass); border: 1px solid var(--glass-line); border-radius: 22px; }
+  .card { background: var(--paper); border: 1px solid var(--line); border-radius: 22px; }
+  .pill { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 999px; font-size: 13px; font-weight: 750; background: rgba(20,184,166,.15); color: var(--mint); }
+  .card .pill, .pill.light { background: var(--primary-soft); color: var(--primary); }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+  .tag { padding: 4px 11px; border-radius: 8px; font-size: 13px; font-weight: 650; background: rgba(255,255,255,.06); color: #cbd5e1; border: 1px solid var(--dark-line); }
+  .card .tag { background: var(--bg); color: var(--ink-2); border-color: var(--line); }
 
   /* 히어로 */
-  .hero { min-height: 100vh; display: flex; align-items: center; overflow: hidden; padding-top: 120px; }
-  .hero::before { content: ""; position: absolute; right: -15%; top: -25%; width: 1000px; height: 1000px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(20,184,166,.32), transparent 62%); animation: drift 14s ease-in-out infinite alternate; }
-  .hero::after { content: ""; position: absolute; left: -15%; bottom: -40%; width: 860px; height: 860px; border-radius: 50%; background: radial-gradient(circle, rgba(192,38,211,.2), transparent 62%); }
-  @keyframes drift { to { transform: translate(-60px, 50px) scale(1.08); } }
-  .hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, .95fr); gap: clamp(32px, 4vw, 72px); align-items: center; }
-  .kick { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 750; letter-spacing: .16em; text-transform: uppercase; color: #5eead4; }
-  .kick::before { content: ""; width: 26px; height: 2px; background: currentColor; }
-  .display { font-size: clamp(56px, 8vw, 140px); font-weight: 880; letter-spacing: -.055em; line-height: .98; margin-top: 22px; }
-  .display span { display: block; background: linear-gradient(90deg, #5eead4, #f0abfc); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  .tagline { font-size: clamp(22px, 2vw, 32px); font-weight: 700; letter-spacing: -.02em; margin-top: 26px; }
-  .lead { color: #94a3b8; font-size: clamp(16px, 1.2vw, 19px); margin-top: 12px; max-width: 600px; }
-  .hero-meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 32px; margin-top: 36px; max-width: 600px; }
-  .hero-meta dt { font-size: 12px; font-weight: 750; letter-spacing: .14em; color: #64748b; text-transform: uppercase; }
-  .hero-meta dd { font-size: 17px; font-weight: 650; color: #e2e8f0; margin-top: 2px; overflow-wrap: anywhere; }
-  .cta { display: flex; gap: 12px; margin-top: 34px; flex-wrap: wrap; }
-  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 24px; border-radius: 999px; font-weight: 750; font-size: 16px; font-family: inherit; cursor: pointer; border: 0; }
-  .btn.solid { background: #fff; color: var(--dark); }
-  .btn.line { border: 1px solid rgba(255,255,255,.25); color: #e2e8f0; background: none; }
-  .term { border-radius: 18px; background: #0c1a1e; border: 1px solid var(--dark-line); box-shadow: 0 40px 90px rgba(0,0,0,.45); overflow: hidden; }
+  .hero { padding: calc(var(--head-h) + clamp(56px, 10vh, 110px)) 0 clamp(64px, 10vh, 110px); overflow: hidden; }
+  .hero .wrap { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(32px, 4vw, 64px); align-items: center; }
+  .hero h1 { font: 400 clamp(32px, 3.7vw, 50px)/1.3 var(--display); letter-spacing: -.02em; color: #fff; margin-top: 20px; }
+  .hero .lead { color: #cbd5e1; margin-top: 20px; max-width: 580px; }
+  .cta { display: flex; gap: 10px; margin-top: 30px; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 12px; font-weight: 750; font-size: 15px; font-family: inherit; cursor: pointer; border: 0; }
+  .btn.solid { background: var(--primary-2); color: var(--dark); }
+  .btn.line { border: 1px solid rgba(255,255,255,.18); color: #e2e8f0; background: rgba(255,255,255,.03); }
+  .term { border-radius: 18px; background: #0c1a1e; border: 1px solid var(--glass-line); box-shadow: 0 40px 90px rgba(0,0,0,.45); overflow: hidden; }
   .term .chrome { height: 36px; display: flex; align-items: center; gap: 8px; padding: 0 14px; background: #13262b; font-size: 12.5px; color: #94a3b8; }
   .term .chrome i { width: 11px; height: 11px; border-radius: 50%; background: #f87171; }
   .term .chrome i:nth-child(2) { background: #fbbf24; } .term .chrome i:nth-child(3) { background: #34d399; margin-right: 8px; }
-  .term pre { padding: 20px 22px; font: 500 clamp(12px, .95vw, 15px)/1.7 ui-monospace, Consolas, monospace; color: #ccfbf1; white-space: pre-wrap; }
-  .term .c { color: #64748b; } .term .k { color: #f0abfc; } .term .ok { color: #34d399; }
-  @media (max-width: 900px) { .hero .wrap { grid-template-columns: minmax(0, 1fr); } .hero-meta { grid-template-columns: 1fr; } }
-
-  /* 흐르는 기술 띠 */
-  .marquee { padding: 20px 0; overflow: hidden; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); color: var(--muted); }
-  .marquee .track { display: flex; width: max-content; animation: marquee 40s linear infinite; font-size: 22px; font-weight: 750; }
-  .marquee .track span { display: flex; align-items: center; gap: 48px; padding-right: 48px; }
-  .marquee .track span::after { content: "✦"; color: var(--primary-2); font-size: 14px; }
-  @keyframes marquee { to { transform: translateX(-50%); } }
+  .term pre { padding: 20px 22px; font: 500 clamp(12px, .95vw, 14.5px)/1.7 ui-monospace, Consolas, monospace; color: #ccfbf1; white-space: pre-wrap; }
+  .term .c { color: #64748b; } .term .k { color: var(--pink); } .term .ok { color: #34d399; }
+  @media (max-width: 900px) { .hero .wrap { grid-template-columns: minmax(0, 1fr); } }
 
   /* 숫자 */
-  .numbers { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 48px; }
-  .numbers > div { background: var(--paper); border-radius: 26px; padding: 32px 28px; }
-  .numbers .n { font-size: clamp(44px, 4.4vw, 76px); font-weight: 860; letter-spacing: -.045em; line-height: 1; font-variant-numeric: tabular-nums; }
-  .numbers .n small { font-size: .38em; font-weight: 750; margin-left: 4px; color: var(--muted); letter-spacing: 0; }
-  .numbers .l { font-size: 15.5px; font-weight: 650; color: var(--muted); margin-top: 12px; }
+  .numbers { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: 40px; }
+  .numbers > div { padding: 28px 24px; }
+  .numbers .n { font: 400 clamp(38px, 3.6vw, 54px)/1 var(--display); color: var(--primary); }
+  .numbers .n small { font: 750 15px "Pretendard Variable", Pretendard, sans-serif; margin-left: 4px; color: var(--muted); }
+  .numbers .l { font-size: 15px; font-weight: 600; color: var(--muted); margin-top: 12px; }
   @media (max-width: 900px) { .numbers { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
-  /* 강점 */
-  .pain { margin-top: 48px; border-top: 1px solid var(--line); }
-  .pain-row { display: grid; grid-template-columns: 90px 320px minmax(0, 1fr); gap: 24px; padding: 40px 0; border-bottom: 1px solid var(--line); align-items: baseline; transition: padding .4s var(--ease), background .4s; }
-  .pain-row:hover { padding-left: 14px; background: rgba(255,255,255,.6); }
-  .pain-row .no { font-size: 15px; font-weight: 800; color: var(--muted); }
-  .pain-row h3 { font-size: clamp(28px, 2.6vw, 42px); font-weight: 850; letter-spacing: -.03em; }
-  .pain-row p { font-size: clamp(17px, 1.3vw, 21px); color: var(--ink-2); }
-  @media (max-width: 760px) { .pain-row { grid-template-columns: 1fr; gap: 6px; } }
+  /* 일하는 방식 2×2 */
+  .grid2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin-top: 44px; }
+  .way { padding: 30px; display: flex; flex-direction: column; transition: transform .3s var(--ease), border-color .3s; }
+  .way:hover { transform: translateY(-4px); border-color: rgba(94,234,212,.6); }
+  .way .num { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; background: rgba(20,184,166,.15); color: var(--mint); font-weight: 800; font-size: 14px; }
+  .way h3 { font-size: 21px; font-weight: 800; color: #fff; margin-top: 18px; }
+  .way p { color: #cbd5e1; margin-top: 10px; flex: 1; }
+  .way .foot { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--dark-line); font-size: 14px; font-weight: 700; color: var(--mint); }
+  @media (max-width: 760px) { .grid2 { grid-template-columns: minmax(0, 1fr); } }
 
-  /* 프로젝트 카드 */
-  .role-card { margin-top: 48px; background: var(--paper); border-radius: 30px; padding: clamp(24px, 3.4vw, 44px); display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 36px; }
-  .role-card h3 { font-size: clamp(30px, 2.6vw, 44px); font-weight: 850; letter-spacing: -.035em; color: var(--primary); }
-  .role-card .meta { font-size: 13px; font-weight: 800; letter-spacing: .1em; color: var(--muted); }
-  .facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 20px; margin-top: 16px; padding: 14px 18px; border-radius: 14px; background: var(--bg); font-size: 15px; }
-  .facts dt { font-size: 12px; font-weight: 800; letter-spacing: .1em; color: var(--muted); }
-  .facts dd { font-weight: 650; color: var(--ink-2); }
-  .role-card ul { list-style: none; margin-top: 20px; display: grid; gap: 12px; }
-  .role-card li { position: relative; padding-left: 40px; font-size: clamp(16px, 1.1vw, 18px); color: var(--ink-2); line-height: 1.5; }
-  .role-card li .n { position: absolute; left: 0; top: 3px; font-size: 14px; font-weight: 800; color: var(--primary); }
-  .role-card .links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 22px; }
-  .role-card .links a { font-size: 14px; font-weight: 750; padding: 6px 14px; border-radius: 999px; background: var(--primary-soft); color: var(--primary); }
-  .arch { border-radius: 20px; padding: 26px; color: #e2e8f0; background: radial-gradient(500px 300px at 90% 0%, rgba(240,171,252,.18), transparent 60%), linear-gradient(150deg, #0f2a2e, #071114); display: flex; flex-direction: column; gap: 10px; align-self: start; }
-  .arch .t { font-size: 12px; font-weight: 800; letter-spacing: .14em; color: #5eead4; }
-  .arch .row { display: grid; grid-template-columns: 110px 1fr; gap: 12px; padding: 12px 14px; border-radius: 12px; background: rgba(255,255,255,.05); border: 1px solid var(--dark-line); font-size: 15px; }
-  .arch .row b { color: #fff; }
-  .arch .row span { color: #94a3b8; }
-  .arch .big { font-size: clamp(44px, 4vw, 68px); font-weight: 880; letter-spacing: -.05em; line-height: 1; margin-top: 10px; color: #fff; }
-  .arch .cap { font-size: 15px; color: #94a3b8; }
-  @media (max-width: 1000px) { .role-card { grid-template-columns: minmax(0, 1fr); } }
+  /* 기술 · 교육 패널 */
+  .panels { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 20px; margin-top: 44px; }
+  .panel { padding: 30px; }
+  .panel h3 { display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 800; }
+  .panel h3::before { content: ""; width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--primary); }
+  .skill { padding: 16px 0; border-bottom: 1px solid var(--line); }
+  .skill:last-of-type { border-bottom: 0; }
+  .skill .row { display: flex; justify-content: space-between; gap: 12px; font-weight: 750; }
+  .skill .row span { font-size: 13px; font-weight: 700; color: var(--primary); white-space: nowrap; }
+  .skill .tags { margin-top: 10px; }
+  .edu { list-style: none; display: grid; gap: 12px; margin-top: 18px; }
+  .edu li { padding: 16px 18px; border-radius: 14px; background: var(--bg); border: 1px solid var(--line); }
+  .edu b { display: block; font-size: 16px; }
+  .edu span { display: block; font-size: 14px; color: var(--primary); font-weight: 650; margin-top: 2px; }
+  .panel .note { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); font-size: 13px; color: var(--muted); }
+  @media (max-width: 900px) { .panels { grid-template-columns: minmax(0, 1fr); } }
+
+  /* 프로젝트 쇼케이스 */
+  .shows { display: grid; gap: 24px; margin-top: 44px; }
+  .show { padding: clamp(24px, 3vw, 40px); display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 36px; }
+  .show .badges { display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; align-items: center; }
+  .show .badges em { font-style: normal; font-size: 13px; font-weight: 700; color: #94a3b8; }
+  .show h3 { font-size: clamp(26px, 2.4vw, 34px); font-weight: 850; letter-spacing: -.03em; color: #fff; margin-top: 16px; }
+  .show .sub { color: #94a3b8; font-size: 15px; font-weight: 600; margin-top: 4px; }
+  .show ul { list-style: none; margin-top: 20px; display: grid; gap: 10px; }
+  .show li { position: relative; padding-left: 34px; color: #cbd5e1; font-size: 16px; }
+  .show li .n { position: absolute; left: 0; top: 2px; font-size: 13px; font-weight: 800; color: var(--mint); }
+  .show li b { color: #fff; }
+  .links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 22px; }
+  .links a { font-size: 14px; font-weight: 750; padding: 7px 14px; border-radius: 10px; background: rgba(20,184,166,.15); color: var(--mint); }
+  .arch { border-radius: 18px; padding: 24px; background: radial-gradient(500px 300px at 90% 0%, rgba(240,171,252,.14), transparent 60%), #081316; border: 1px solid var(--dark-line); display: flex; flex-direction: column; gap: 10px; align-self: start; }
+  .arch .t { font-size: 12px; font-weight: 800; letter-spacing: .14em; color: var(--mint); }
+  .arch .row { display: grid; grid-template-columns: 96px 1fr; gap: 12px; padding: 11px 14px; border-radius: 12px; background: rgba(255,255,255,.04); border: 1px solid var(--dark-line); font-size: 14.5px; }
+  .arch .row b { color: #fff; } .arch .row span { color: #94a3b8; }
+  .arch .big { font: 400 clamp(40px, 3.6vw, 56px)/1 var(--display); color: #fff; margin-top: 10px; }
+  .arch .cap { font-size: 14px; color: #94a3b8; }
+  @media (max-width: 1000px) { .show { grid-template-columns: minmax(0, 1fr); } }
 
   /* 문제 해결 — 스크롤하면 카드가 겹쳐 쌓인다 */
-  .stack { list-style: none; display: grid; gap: 40px; margin-top: 40px; }
-  .stack-item { position: sticky; top: 100px; }
-  .stack-card { border-radius: 32px; padding: clamp(28px, 4vw, 56px); background: linear-gradient(160deg, #10262a, #081316); border: 1px solid var(--dark-line);
-    box-shadow: 0 -20px 60px rgba(0,0,0,.35); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(28px, 4vw, 64px); }
-  .stack-card .no { font-size: 15px; font-weight: 800; letter-spacing: .14em; color: #64748b; }
-  .stack-card .q { font-size: clamp(26px, 2.6vw, 44px); font-weight: 850; letter-spacing: -.035em; line-height: 1.22; margin-top: 16px; }
-  .stack-card .lbl { font-size: 13px; font-weight: 800; letter-spacing: .16em; color: #5eead4; }
-  .stack-card .a { font-size: clamp(17px, 1.4vw, 22px); color: #cbd5e1; margin-top: 14px; }
+  .stack { list-style: none; display: grid; gap: 36px; margin-top: 40px; }
+  .stack-item { position: sticky; top: calc(var(--head-h) + 24px); }
+  .stack-card { border-radius: 26px; padding: clamp(26px, 3.6vw, 48px); background: linear-gradient(160deg, #10262a, #081316); border: 1px solid var(--glass-line); color: #e2e8f0;
+    box-shadow: 0 -16px 50px rgba(7,17,20,.25); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(24px, 3.6vw, 56px); }
+  .stack-card .no { font-size: 14px; font-weight: 800; letter-spacing: .14em; color: #64748b; }
+  .stack-card .q { font-size: clamp(24px, 2.4vw, 36px); font-weight: 850; letter-spacing: -.03em; line-height: 1.3; margin-top: 14px; color: #fff; }
+  .stack-card .lbl { font-size: 13px; font-weight: 800; letter-spacing: .16em; color: var(--mint); }
+  .stack-card .a { font-size: clamp(16px, 1.25vw, 19px); color: #cbd5e1; margin-top: 12px; }
   .stack-card .a b { color: #fff; }
-  .stack-card .side { border-left: 1px solid var(--dark-line); padding-left: clamp(24px, 3vw, 52px); }
-  .code { margin-top: 22px; border-radius: 16px; background: #050d10; border: 1px solid var(--dark-line); overflow: hidden; }
+  .stack-card .side { border-left: 1px solid var(--dark-line); padding-left: clamp(22px, 3vw, 44px); }
+  .stack-card code { background: rgba(94,234,212,.12); color: var(--mint); }
+  .code { margin-top: 20px; border-radius: 14px; background: #050d10; border: 1px solid var(--dark-line); overflow: hidden; }
   .code figcaption { font: 600 12.5px/1 ui-monospace, Consolas, monospace; color: #64748b; padding: 12px 18px; border-bottom: 1px solid var(--dark-line); }
-  .code pre { padding: 16px 18px; font: 500 clamp(12px, .9vw, 15px)/1.65 ui-monospace, Consolas, monospace; color: #ccfbf1; overflow-x: auto; }
+  .code pre { padding: 16px 18px; font: 500 clamp(12px, .88vw, 14px)/1.65 ui-monospace, Consolas, monospace; color: #ccfbf1; overflow-x: auto; }
   @media (max-width: 900px) { .stack-card { grid-template-columns: minmax(0, 1fr); } .stack-card .side { border-left: 0; padding-left: 0; } .stack-item { position: static; } }
 
+  /* 이력 아카이브 표 */
+  .archive { margin-top: 44px; padding: clamp(18px, 2.6vw, 32px); overflow-x: auto; }
+  .archive table { width: 100%; min-width: 720px; border-collapse: collapse; font-size: 15px; }
+  .archive th { text-align: left; font-size: 13px; font-weight: 800; color: #94a3b8; padding: 0 14px 14px; border-bottom: 1px solid var(--glass-line); white-space: nowrap; }
+  .archive td { padding: 15px 14px; border-bottom: 1px solid var(--dark-line); color: #cbd5e1; vertical-align: top; }
+  .archive tr:last-child td { border-bottom: 0; }
+  .archive tbody tr { transition: background .2s; } .archive tbody tr:hover { background: rgba(255,255,255,.03); }
+  .archive td:first-child { color: #fff; font-weight: 700; }
+  .archive td:first-child a { border-bottom: 1px solid rgba(94,234,212,.4); }
+  .archive td:nth-child(2) { white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .archive td:last-child, .archive th:last-child { text-align: right; white-space: nowrap; }
+  .archive td:last-child { color: var(--mint); font-weight: 800; }
+
   /* 이력서 표 */
-  .resume { margin-top: 40px; background: var(--paper); border-radius: 30px; padding: clamp(22px, 3vw, 44px); }
-  .resume h3 { font-size: 20px; font-weight: 850; margin: 28px 0 10px; padding-left: 12px; border-left: 4px solid var(--primary); }
+  .head-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; }
+  .btn.print { border: 1px solid var(--line); background: var(--paper); color: var(--ink); }
+  .resume { margin-top: 36px; padding: clamp(22px, 3vw, 40px); }
+  .resume h3 { font-size: 19px; font-weight: 850; margin: 28px 0 10px; padding-left: 12px; border-left: 4px solid var(--primary); }
   .resume h3:first-child { margin-top: 0; }
-  .resume table { width: 100%; border-collapse: collapse; font-size: 16px; border-top: 2px solid var(--ink); }
+  .resume table { width: 100%; border-collapse: collapse; font-size: 15.5px; border-top: 2px solid var(--ink); }
   .resume th, .resume td { padding: 11px 14px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
   .resume th { background: #f8fafc; font-weight: 750; color: var(--ink-2); white-space: nowrap; }
   .resume tbody td:first-child { white-space: nowrap; font-variant-numeric: tabular-nums; }
-  .todo, .hero-meta dd.todo { color: var(--ai); font-weight: 700; }
-  .dark .todo, .hero-meta dd.todo { color: #f0abfc; }
-  .head-row { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; flex-wrap: wrap; }
-  .btn.print { border: 1px solid var(--line); background: var(--paper); color: var(--ink); }
   @media (max-width: 760px) { .resume { overflow-x: auto; } .resume table { min-width: 560px; font-size: 14px; } }
 
-  /* 기술 */
-  .skills { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 40px; }
-  .skills > div { background: var(--paper); border-radius: 24px; padding: 28px; }
-  .skills h3 { font-size: 14px; font-weight: 800; letter-spacing: .12em; color: var(--muted); text-transform: uppercase; }
-  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
-  .chip { padding: 7px 14px; border-radius: 999px; background: var(--bg); font-size: 15px; font-weight: 650; color: var(--ink-2); }
-  @media (max-width: 900px) { .skills { grid-template-columns: minmax(0, 1fr); } }
-
   /* 연락 */
-  .contact h2 { font-size: clamp(44px, 7vw, 120px); font-weight: 880; letter-spacing: -.055em; line-height: 1.02; }
-  .contact h2 span { background: linear-gradient(90deg, #5eead4, #f0abfc); -webkit-background-clip: text; background-clip: text; color: transparent; }
-  footer { padding: 28px 0; color: #64748b; font-size: 14px; border-top: 1px solid var(--dark-line); }
+  .contact-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 20px; margin-top: 44px; }
+  .contact-grid .glass { padding: 32px; }
+  .contact-grid h3 { font-size: 21px; font-weight: 800; color: #fff; }
+  .contact-grid p { color: #cbd5e1; margin-top: 12px; }
+  .infos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 22px; }
+  .infos div { padding: 16px 18px; border-radius: 14px; background: rgba(255,255,255,.04); border: 1px solid var(--dark-line); overflow-wrap: anywhere; }
+  .infos dt { font-size: 13px; font-weight: 800; color: var(--mint); }
+  .infos dd { color: #fff; font-weight: 600; margin-top: 4px; }
+  .namecard { text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center; }
+  .namecard h3 { font: 400 30px var(--display); }
+  .namecard .role { color: var(--mint); font-weight: 700; margin-top: 6px; }
+  .namecard .btn { width: 100%; justify-content: center; margin-top: 24px; }
+  @media (max-width: 900px) { .contact-grid, .infos { grid-template-columns: minmax(0, 1fr); } }
+  footer { padding: 28px 0; color: #64748b; font-size: 14px; border-top: 1px solid var(--dark-line); text-align: center; }
 
   /* 인쇄 · PDF: 이력서와 프로젝트만 깔끔하게 */
   @media print {
-    #bar, .nav, .hero, .marquee, .cta, .btn.print, .contact, footer { display: none !important; }
+    #bar, .top, .hero, .cta, .btn.print, #contact, footer { display: none !important; }
     body { background: #fff; font-size: 12px; }
     section { padding: 16px 0; break-inside: avoid; }
-    .dark { background: #fff; color: var(--ink); }
+    .dark, .dark.alt { background: #fff; color: var(--ink); }
+    .glow::before { display: none; }
     .js .rv { opacity: 1 !important; transform: none !important; }
-    .stack-item { position: static; } .stack-card { background: #fff; color: var(--ink); box-shadow: none; border: 1px solid var(--line); }
-    .stack-card .a, .dark .intro { color: var(--ink-2); } .stack-card .a b { color: var(--ink); }
+    .stack-item { position: static; }
   }
 </style>
 </head>
 <body>
 <div id="bar"></div>
 
-<nav class="nav" aria-label="섹션 이동">
-  <a class="logo" href="#top"><i>S</i>신수진</a>
-  <a class="lnk" href="#about">소개</a>
-  <a class="lnk" href="#strengths">강점</a>
-  <a class="lnk" href="#projects">프로젝트</a>
-  <a class="lnk" href="#challenges">문제 해결</a>
-  <a class="lnk" href="#resume">이력서</a>
-  <a class="lnk" href="#skills">기술</a>
-  <a class="live" href="https://github.com/s-sujin-99?tab=repositories" target="_blank" rel="noopener">GitHub ↗</a>
-</nav>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top"><i>S</i><span><b>Shin Sujin</b><small>Backend Developer</small></span></a>
+    <nav class="menu" id="menu" aria-label="섹션 이동">
+      <a href="#about">Intro</a>
+      <a href="#strengths">Philosophy</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Showcase</a>
+      <a href="#archive">Archive</a>
+      <a href="#resume">Résumé</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="actions">
+      <a class="ask" href="#contact">문의하기</a>
+      <button class="burger" type="button" aria-controls="menu" aria-expanded="false" aria-label="메뉴 열기">☰</button>
+    </div>
+  </div>
+</header>
 
 <!-- 히어로 -->
-<header id="top" class="hero dark">
+<section id="top" class="hero dark glow">
   <div class="wrap">
     <div>
-      <p class="kick rv">Portfolio · Résumé</p>
-      <h1 class="display rv" style="--d:100">신수진<span>Backend.</span></h1>
-      <p class="tagline rv" style="--d:200">AI를 서비스에 붙이고, 운영까지 책임지는 개발자.</p>
-      <p class="lead rv" style="--d:300">Java · Spring Boot로 LLM 분류 · 답변 초안 · 메일 자동화를 만들고, AWS에 직접 배포해 운영 URL에서 검증했습니다. "로컬에서 됐다"가 아니라 "운영에서 확인했다"를 기준으로 일합니다.</p>
-      <dl class="hero-meta rv" style="--d:400">
-        <div><dt>Role</dt><dd>백엔드 개발자 (신입)</dd></div>
-        <div><dt>Education</dt><dd>신구대학교 IT소프트웨어과 · 2025.08</dd></div>
-        <div><dt>Email</dt><dd><a href="mailto:t2684258@gmail.com">t2684258@gmail.com</a></dd></div>
-        <div><dt>GitHub</dt><dd><a href="https://github.com/s-sujin-99?tab=repositories" target="_blank" rel="noopener">github.com/s-sujin-99</a></dd></div>
-      </dl>
-      <div class="cta rv" style="--d:500">
-        <a class="btn solid" href="#projects">프로젝트 보기 →</a>
-        <a class="btn line" href="#contact">연락하기</a>
+      <span class="pill rv">▸ Java · Spring Boot 백엔드 개발자 (신입)</span>
+      <h1 class="rv" style="--d:100">AI를 서비스에 붙이고,<br><span class="grad">운영까지</span> 책임집니다.</h1>
+      <p class="lead rv" style="--d:200">LLM 분류 · 답변 초안 · 메일 자동화를 만들고, AWS에 직접 배포해 운영 URL에서 검증했습니다. "로컬에서 됐다"가 아니라 "운영에서 확인했다"를 기준으로 일하는 백엔드 개발자 신수진입니다.</p>
+      <div class="cta rv" style="--d:300">
+        <a class="btn solid" href="#projects">주요 프로젝트 보기 →</a>
+        <a class="btn line" href="https://github.com/s-sujin-99?tab=repositories" target="_blank" rel="noopener">GitHub ↗</a>
       </div>
     </div>
     <div class="term rv" style="--d:300">
@@ -232,128 +278,159 @@ latency    ~1s · timeout 0 · 429 0
 health <span class="ok">UP</span> · https://helpnest.kro.kr</pre>
     </div>
   </div>
-</header>
+</section>
 
-<!-- 숫자 -->
+<!-- 숫자로 보는 소개 -->
 <section id="about">
   <div class="wrap">
-    <p class="eyebrow rv"><span class="no">01</span>About</p>
+    <p class="eyebrow rv">About Me</p>
     <h2 class="title rv">숫자로 보는 신수진</h2>
-    <p class="intro rv">3인 팀 프로젝트 HelpNest에서 AI 자동화 · 메일 · 대시보드 · CI · AWS 배포를 맡았고, 개인 프로젝트 우리동네약값에서 공공데이터와 추천 로직을 설계했습니다. 그 전에는 1년 7개월 동안 제품 디자이너로 일하며 만든 제품을 CES · 스마트센서코리아 전시까지 가져갔습니다. 기능을 만들고 끝내지 않고, 측정하고 문서로 남겨 팀이 같은 기준으로 쓰게 합니다.</p>
+    <p class="intro rv">3인 팀 프로젝트 HelpNest에서 AI 자동화 · 메일 · 대시보드 · CI · AWS 배포를 맡았고, 개인 프로젝트 우리동네약값에서 공공데이터와 추천 로직을 설계했습니다. 그 전에는 1년 7개월 동안 제품 디자이너로 일하며 만든 제품을 CES · 스마트센서코리아 전시까지 가져갔습니다.</p>
     <div class="numbers">
-      <div class="rv"><div class="n">170<small>커밋</small></div><div class="l">HelpNest 본인 커밋 (back 74 · front 57 · docs 39)</div></div>
-      <div class="rv" style="--d:100"><div class="n">100<small>%</small></div><div class="l">LLM 문의 분류 정확도 (샘플 30건)</div></div>
-      <div class="rv" style="--d:200"><div class="n">7<small>종</small></div><div class="l">직접 구성한 AWS 자원 (EC2 · RDS · CloudFront · Amplify · S3 · SES · IAM)</div></div>
-      <div class="rv" style="--d:300"><div class="n">16<small>개</small></div><div class="l">운영 URL 통합 시나리오 스모크 테스트</div></div>
+      <div class="card rv"><div class="n">170<small>커밋</small></div><div class="l">HelpNest 본인 커밋 (back 74 · front 57 · docs 39)</div></div>
+      <div class="card rv" style="--d:100"><div class="n">100<small>%</small></div><div class="l">LLM 문의 분류 정확도 (샘플 30건)</div></div>
+      <div class="card rv" style="--d:200"><div class="n">7<small>종</small></div><div class="l">직접 구성한 AWS 자원 (EC2 · RDS · CloudFront · Amplify · S3 · SES · IAM)</div></div>
+      <div class="card rv" style="--d:300"><div class="n">376<small>만 건</small></div><div class="l">우리동네약값 가격 제보 시드 데이터</div></div>
     </div>
   </div>
 </section>
 
-<div class="marquee" aria-hidden="true">
-  <div class="track">
-    <span>Java 21</span><span>Spring Boot</span><span>Spring AI</span><span>Gemini</span><span>JPA</span><span>PostgreSQL</span><span>Flyway</span><span>pg_trgm</span><span>Python</span><span>Next.js 16</span><span>TypeScript</span><span>GitHub Actions</span><span>AWS EC2</span><span>RDS</span><span>CloudFront</span><span>Amplify</span><span>S3</span><span>SES</span><span>Claude Code</span>
-    <span>Java 21</span><span>Spring Boot</span><span>Spring AI</span><span>Gemini</span><span>JPA</span><span>PostgreSQL</span><span>Flyway</span><span>pg_trgm</span><span>Python</span><span>Next.js 16</span><span>TypeScript</span><span>GitHub Actions</span><span>AWS EC2</span><span>RDS</span><span>CloudFront</span><span>Amplify</span><span>S3</span><span>SES</span><span>Claude Code</span>
-  </div>
-</div>
-
-<!-- 강점 -->
-<section id="strengths">
+<!-- 일하는 방식 -->
+<section id="strengths" class="dark glow">
   <div class="wrap">
-    <p class="eyebrow rv"><span class="no">02</span>Strengths</p>
-    <h2 class="title rv">제가 일하는 세 가지 방식</h2>
-    <div class="pain">
-      <div class="pain-row rv"><span class="no">01</span><h3>측정하고 고르기</h3><p>LLM 모델을 감으로 고르지 않았습니다. 샘플 30건으로 <b>정확도 · 응답 시간 · 무료 한도</b>를 직접 재서, 사고(thinking) 모델은 10초 타임아웃을 넘는다는 걸 확인하고 <code>flash-lite</code>를 채택했습니다.</p></div>
-      <div class="pain-row rv"><span class="no">02</span><h3>운영에서 확인하기</h3><p>배포 후 운영 URL에서 시나리오 16개를 다시 돌렸고, 로컬에선 안 보이던 <b>CSV 다운로드 멈춤 · X-Forwarded-For 위조 · WebSocket 재연결 실패</b>를 찾아 팀원과 함께 고쳤습니다.</p></div>
-      <div class="pain-row rv"><span class="no">03</span><h3>팀이 막히지 않게</h3><p>LLM · 메일 · 파일 저장을 <b>포트 인터페이스 + Mock 구현</b>으로 먼저 열어, 다른 팀원이 API 키나 AWS 없이도 첫날부터 로컬 개발할 수 있게 했습니다.</p></div>
+    <p class="eyebrow rv">Work Philosophy</p>
+    <h2 class="title rv">확인하고, 남기고, 함께 갑니다.</h2>
+    <p class="intro rv">기능을 만드는 데서 끝내지 않고 측정하고 운영에서 확인한 뒤, 팀이 같은 기준으로 쓸 수 있게 기록합니다.</p>
+    <div class="grid2">
+      <article class="glass way rv"><span class="num">01</span><h3>측정하고 고르기</h3>
+        <p>LLM 모델을 감으로 고르지 않았습니다. 샘플 30건으로 정확도 · 응답 시간 · 무료 한도를 직접 재서, 사고 모델은 10초 타임아웃을 넘는다는 걸 확인하고 <code>flash-lite</code>를 채택했습니다.</p>
+        <p class="foot">Measure before choose</p></article>
+      <article class="glass way rv" style="--d:100"><span class="num">02</span><h3>운영에서 확인하기</h3>
+        <p>배포 후 운영 URL에서 시나리오 16개를 다시 돌려, 로컬에선 안 보이던 CSV 다운로드 멈춤 · X-Forwarded-For 위조 · WebSocket 재연결 실패를 찾아 팀원과 함께 고쳤습니다.</p>
+        <p class="foot">Production smoke test</p></article>
+      <article class="glass way rv"><span class="num">03</span><h3>팀이 막히지 않게</h3>
+        <p>LLM · 메일 · 파일 저장을 포트 인터페이스와 Mock 구현으로 먼저 열어, 다른 팀원이 API 키나 AWS 없이도 첫날부터 로컬에서 개발할 수 있게 했습니다.</p>
+        <p class="foot">Port &amp; Mock first</p></article>
+      <article class="glass way rv" style="--d:100"><span class="num">04</span><h3>기록으로 남기기</h3>
+        <p>모델 측정 결과, AWS 자원 구성, 배포 · 롤백 · 환경변수 변경 절차를 문서로 남겼습니다. 다음 사람이 같은 실수를 하지 않게 운영에서 겪은 사고까지 적었습니다.</p>
+        <p class="foot">Docs as runbook</p></article>
     </div>
   </div>
 </section>
 
-<!-- 프로젝트 -->
-<section id="projects">
+<!-- 기술 · 교육 -->
+<section id="skills">
+  <div class="wrap center">
+    <p class="eyebrow rv">Expertise &amp; Growth</p>
+    <h2 class="title rv">배우고 바로 써 봤습니다.</h2>
+    <p class="intro rv">기술마다 실제로 쓴 프로젝트를 함께 적었습니다.</p>
+  </div>
   <div class="wrap">
-    <p class="eyebrow rv"><span class="no">03</span>Projects</p>
-    <h2 class="title rv">제가 맡은 프로젝트</h2>
+    <div class="panels">
+      <div class="card panel rv">
+        <h3>Tech Stack</h3>
+        <div class="skill"><div class="row">Backend<span>HelpNest · 우리동네약값</span></div>
+          <div class="tags"><span class="tag">Java 21</span><span class="tag">Spring Boot 4</span><span class="tag">Spring Security · JWT</span><span class="tag">JPA</span><span class="tag">JUnit · Testcontainers</span></div></div>
+        <div class="skill"><div class="row">AI<span>HelpNest</span></div>
+          <div class="tags"><span class="tag">Spring AI</span><span class="tag">Gemini API</span><span class="tag">개인정보 마스킹</span></div></div>
+        <div class="skill"><div class="row">Data<span>HelpNest · 우리동네약값</span></div>
+          <div class="tags"><span class="tag">PostgreSQL</span><span class="tag">Flyway</span><span class="tag">pg_trgm</span><span class="tag">Python 시드 변환</span></div></div>
+        <div class="skill"><div class="row">Infra · DevOps<span>HelpNest</span></div>
+          <div class="tags"><span class="tag">AWS EC2 · RDS</span><span class="tag">CloudFront · Amplify</span><span class="tag">S3 · SES · IAM</span><span class="tag">GitHub Actions</span><span class="tag">systemd</span></div></div>
+        <div class="skill"><div class="row">Frontend · Tools<span>전 프로젝트</span></div>
+          <div class="tags"><span class="tag">Next.js 16</span><span class="tag">TypeScript</span><span class="tag">Tailwind · shadcn/ui</span><span class="tag">카카오맵 API</span><span class="tag">Claude Code</span></div></div>
+      </div>
+      <div class="card panel rv" style="--d:100">
+        <h3>Education &amp; Career</h3>
+        <ul class="edu">
+          <li><b>자바와 생성형AI를 활용한 차세대 CRM플랫폼개발 6기</b><span>2026.05 – 2026.11 | 하이미디어아카데미</span></li>
+          <li><b>신구대학교 IT소프트웨어과 졸업</b><span>2023.03 – 2025.08 | 평점 3.7</span></li>
+          <li><b>삼영에스엔씨 제품 디자인 · 3D 모델링</b><span>2021.08 – 2023.02 | Rhino · KeyShot · 3D 프린팅</span></li>
+        </ul>
+        <p class="note">제품 디자인 경력에서 만든 공기질 측정기(AQ-200)가 CES 전시로 확정됐고, 2022 스마트센서코리아에 전시됐습니다.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 프로젝트 쇼케이스 -->
+<section id="projects" class="dark alt glow">
+  <div class="wrap">
+    <p class="eyebrow rv">Featured Showcase</p>
+    <h2 class="title rv">직접 만든 것을 소개합니다.</h2>
     <p class="intro rv">기간 · 인원 · 역할 · 기술을 먼저 적고, 제가 직접 구현한 내용만 정리했습니다.</p>
-
-    <article class="role-card rv">
-      <div>
-        <p class="meta">AI 고객상담(CS) 헬프데스크 · 하이미디어아카데미 메인 프로젝트</p>
-        <h3>HelpNest</h3>
-        <dl class="facts">
-          <div><dt>기간</dt><dd>2026.09.11 – 11.04</dd></div>
-          <div><dt>인원</dt><dd>3인 팀</dd></div>
-          <div><dt>역할</dt><dd>AI 자동화 · 메일 · 대시보드 · CI · AWS 배포</dd></div>
-          <div><dt>기술</dt><dd>Spring Boot 4.1 · Spring AI · Gemini · Next.js 16 · AWS</dd></div>
-        </dl>
-        <ul>
-          <li><span class="n">01</span>문의 접수 이벤트를 비동기로 받아 LLM이 <b>유형 · 긴급도 · 감정</b>을 분류, 불만이면 우선순위를 한 단계 올림</li>
-          <li><span class="n">02</span>상담원용 <b>AI 답변 초안</b> · 고객용 <b>AI 상담</b>(FAQ 근거, 없으면 상담원 연결 안내)</li>
-          <li><span class="n">03</span>LLM 전송 전 <b>개인정보 마스킹</b>(전화 · 이메일 · 카드/계좌), 키가 없으면 Mock 으로 동작</li>
-          <li><span class="n">04</span>결과 · 설문 · 인증 메일 4종 HTML 템플릿, <b>실패 메일 재시도 스케줄러</b>(최대 3회)</li>
-          <li><span class="n">05</span>대시보드 · 월간 리포트 API와 화면, 상담원 처리 현황 <b>CSV 다운로드</b></li>
-          <li><span class="n">06</span>back · front <b>GitHub Actions CI</b>, EC2 systemd 배포 스크립트(이전 jar 백업 · 롤백)</li>
-        </ul>
-        <div class="links">
-          <a href="https://helpnest.kro.kr" target="_blank" rel="noopener">Live ↗</a>
-          <a href="https://github.com/BaekSeongJun/helpnest-back/commits?author=s-sujin-99" target="_blank" rel="noopener">내 back 커밋 ↗</a>
-          <a href="https://github.com/BaekSeongJun/helpnest-front/commits?author=s-sujin-99" target="_blank" rel="noopener">내 front 커밋 ↗</a>
+    <div class="shows">
+      <article class="glass show rv">
+        <div>
+          <div class="badges"><span class="pill">26.09 – 26.11 · 3인 팀</span><em>팀 프로젝트</em></div>
+          <h3>HelpNest</h3>
+          <p class="sub">AI 고객상담(CS) 헬프데스크 · 하이미디어아카데미 메인 프로젝트</p>
+          <ul>
+            <li><span class="n">01</span>문의 접수 이벤트를 비동기로 받아 LLM이 <b>유형 · 긴급도 · 감정</b>을 분류, 불만이면 우선순위를 한 단계 올림</li>
+            <li><span class="n">02</span>상담원용 <b>AI 답변 초안</b> · 고객용 <b>AI 상담</b>(FAQ 근거, 없으면 상담원 연결 안내)</li>
+            <li><span class="n">03</span>LLM 전송 전 <b>개인정보 마스킹</b>(전화 · 이메일 · 카드/계좌), 키가 없으면 Mock 으로 동작</li>
+            <li><span class="n">04</span>결과 · 설문 · 인증 메일 4종 HTML 템플릿, <b>실패 메일 재시도 스케줄러</b>(최대 3회)</li>
+            <li><span class="n">05</span>대시보드 · 월간 리포트 API와 화면, 상담원 처리 현황 <b>CSV 다운로드</b></li>
+            <li><span class="n">06</span>back · front <b>GitHub Actions CI</b>, EC2 systemd 배포 스크립트(이전 jar 백업 · 롤백)</li>
+          </ul>
+          <div class="tags"><span class="tag">Spring Boot 4.1</span><span class="tag">Spring AI</span><span class="tag">Gemini</span><span class="tag">Next.js 16</span><span class="tag">AWS</span></div>
+          <div class="links">
+            <a href="https://helpnest.kro.kr" target="_blank" rel="noopener">Live ↗</a>
+            <a href="https://github.com/BaekSeongJun/helpnest-back/commits?author=s-sujin-99" target="_blank" rel="noopener">내 back 커밋 ↗</a>
+            <a href="https://github.com/BaekSeongJun/helpnest-front/commits?author=s-sujin-99" target="_blank" rel="noopener">내 front 커밋 ↗</a>
+          </div>
         </div>
-      </div>
-      <div class="arch">
-        <p class="t">PRODUCTION · AP-NORTHEAST-2</p>
-        <div class="row"><b>Amplify</b><span>Next.js 프론트 · main 머지 시 자동 배포 · helpnest.kro.kr</span></div>
-        <div class="row"><b>CloudFront</b><span>백엔드 HTTPS · WSS, EC2는 CloudFront 대역만 허용</span></div>
-        <div class="row"><b>EC2</b><span>Spring Boot · Corretto 21 · systemd</span></div>
-        <div class="row"><b>RDS</b><span>PostgreSQL 16 · 퍼블릭 액세스 없음 · Flyway</span></div>
-        <div class="row"><b>S3 · SES</b><span>첨부 Presigned URL · DKIM 인증 메일 발송</span></div>
-        <div class="row"><b>IAM Role</b><span>키 없이 인스턴스 Role로 S3 · SES 접근</span></div>
-        <p class="big">15 / 16</p>
-        <p class="cap">운영 첫 스모크 테스트 바로 통과 · 남은 1건(CSV)은 원인 찾아 수정 후 통과</p>
-      </div>
-    </article>
-
-    <article class="role-card rv">
-      <div>
-        <p class="meta">일반의약품 최저가 추천 · 하이미디어아카데미 미니 프로젝트</p>
-        <h3>우리동네약값</h3>
-        <dl class="facts">
-          <div><dt>기간</dt><dd>2026.08.28 – 09.10 (14일)</dd></div>
-          <div><dt>인원</dt><dd>1인 개인 프로젝트 (발표는 4인 공동)</dd></div>
-          <div><dt>역할</dt><dd>기획 · 문서 · 공공데이터 정제 · 추천 로직</dd></div>
-          <div><dt>기술</dt><dd>Spring Boot 4.1 · PostgreSQL 17 · Next.js 16 · Python</dd></div>
-        </dl>
-        <ul>
-          <li><span class="n">01</span>약국마다 다른 상비약 가격을 <b>사용자 제보</b>로 모아 내 위치 근처 최저가 약국을 추천</li>
-          <li><span class="n">02</span>Python으로 공공데이터(심평원 약국정보 · 식약처 e약은요)를 <b>시드 SQL로 변환</b> — 약국 23,571곳 · 약품 4,784종</li>
-          <li><span class="n">03</span>이상치에 강한 <b>대표가격</b>(IQR 제거 후 중앙값)과 가격 · 거리 · 최신성을 묶은 <b>추천 Score</b> 설계</li>
-          <li><span class="n">04</span>제보가 들어올 때 해당 (약국, 약품)만 다시 계산하는 <b>통계 캐시 테이블</b></li>
-          <li><span class="n">05</span>JWT · Google OAuth2 인증, 가격 제보 · 관리자 통계 API</li>
-          <li><span class="n">06</span>PRD · DATABASE · API · ROADMAP 문서를 코드보다 먼저 확정</li>
-        </ul>
-        <div class="links">
-          <a href="https://github.com/s-sujin-99/miniProject1" target="_blank" rel="noopener">docs ↗</a>
-          <a href="https://github.com/s-sujin-99/miniproject1-backend/tree/main" target="_blank" rel="noopener">back ↗</a>
-          <a href="https://github.com/s-sujin-99/miniproject1-frontend/tree/main" target="_blank" rel="noopener">front ↗</a>
+        <div class="arch">
+          <p class="t">PRODUCTION · AP-NORTHEAST-2</p>
+          <div class="row"><b>Amplify</b><span>Next.js 프론트 · main 머지 시 자동 배포 · helpnest.kro.kr</span></div>
+          <div class="row"><b>CloudFront</b><span>백엔드 HTTPS · WSS, EC2는 CloudFront 대역만 허용</span></div>
+          <div class="row"><b>EC2</b><span>Spring Boot · Corretto 21 · systemd</span></div>
+          <div class="row"><b>RDS</b><span>PostgreSQL 16 · 퍼블릭 액세스 없음 · Flyway</span></div>
+          <div class="row"><b>S3 · SES</b><span>첨부 Presigned URL · DKIM 인증 메일 발송</span></div>
+          <div class="row"><b>IAM Role</b><span>키 없이 인스턴스 Role로 S3 · SES 접근</span></div>
+          <p class="big">15 / 16</p>
+          <p class="cap">운영 첫 스모크 테스트 바로 통과 · 남은 1건(CSV)은 원인 찾아 수정 후 통과</p>
         </div>
-      </div>
-      <div class="arch">
-        <p class="t">RECOMMENDATION SCORE</p>
-        <div class="row"><b>0.60</b><span>가격 · 반경 안 후보끼리 min-max 정규화</span></div>
-        <div class="row"><b>0.25</b><span>거리 · Haversine, 반경 R 대비</span></div>
-        <div class="row"><b>0.15</b><span>최신성 · 반감기 30일</span></div>
-        <div class="row"><b>대표가격</b><span>90일 제보 → IQR 이상치 제거 → 중앙값</span></div>
-        <p class="big">376만 건</p>
-        <p class="cap">가격 제보 시드 데이터 · 반경 500m–5km 지도 비교</p>
-      </div>
-    </article>
+      </article>
+
+      <article class="glass show rv">
+        <div>
+          <div class="badges"><span class="pill">26.08 – 26.09 · 1인</span><em>개인 프로젝트 (발표는 4인 공동)</em></div>
+          <h3>우리동네약값</h3>
+          <p class="sub">일반의약품 최저가 추천 · 하이미디어아카데미 미니 프로젝트</p>
+          <ul>
+            <li><span class="n">01</span>약국마다 다른 상비약 가격을 <b>사용자 제보</b>로 모아 내 위치 근처 최저가 약국을 추천</li>
+            <li><span class="n">02</span>Python으로 공공데이터(심평원 약국정보 · 식약처 e약은요)를 <b>시드 SQL로 변환</b> — 약국 23,571곳 · 약품 4,784종</li>
+            <li><span class="n">03</span>이상치에 강한 <b>대표가격</b>(IQR 제거 후 중앙값)과 가격 · 거리 · 최신성을 묶은 <b>추천 Score</b> 설계</li>
+            <li><span class="n">04</span>제보가 들어올 때 해당 (약국, 약품)만 다시 계산하는 <b>통계 캐시 테이블</b></li>
+            <li><span class="n">05</span>JWT · Google OAuth2 인증, 가격 제보 · 관리자 통계 API</li>
+            <li><span class="n">06</span>PRD · DATABASE · API · ROADMAP 문서를 코드보다 먼저 확정</li>
+          </ul>
+          <div class="tags"><span class="tag">Spring Boot 4.1</span><span class="tag">PostgreSQL 17</span><span class="tag">Next.js 16</span><span class="tag">Python</span><span class="tag">카카오맵</span></div>
+          <div class="links">
+            <a href="https://github.com/s-sujin-99/miniProject1" target="_blank" rel="noopener">docs ↗</a>
+            <a href="https://github.com/s-sujin-99/miniproject1-backend/tree/main" target="_blank" rel="noopener">back ↗</a>
+            <a href="https://github.com/s-sujin-99/miniproject1-frontend/tree/main" target="_blank" rel="noopener">front ↗</a>
+          </div>
+        </div>
+        <div class="arch">
+          <p class="t">RECOMMENDATION SCORE</p>
+          <div class="row"><b>0.60</b><span>가격 · 반경 안 후보끼리 min-max 정규화</span></div>
+          <div class="row"><b>0.25</b><span>거리 · Haversine, 반경 R 대비</span></div>
+          <div class="row"><b>0.15</b><span>최신성 · 반감기 30일</span></div>
+          <div class="row"><b>대표가격</b><span>90일 제보 → IQR 이상치 제거 → 중앙값</span></div>
+          <p class="big">376만 건</p>
+          <p class="cap">가격 제보 시드 데이터 · 반경 500m–5km 지도 비교</p>
+        </div>
+      </article>
+    </div>
   </div>
 </section>
 
 <!-- 문제 해결 -->
-<section id="challenges" class="dark">
+<section id="challenges">
   <div class="wrap">
-    <p class="eyebrow rv"><span class="no">04</span>Challenges</p>
+    <p class="eyebrow rv">Problem Solving</p>
     <h2 class="title rv">까다로웠던 문제와 해결</h2>
     <p class="intro rv">스크롤하면 다음 문제가 앞 카드를 덮으며 올라옵니다. 모두 제가 직접 맡았거나 원인을 추적한 문제입니다.</p>
     <ol class="stack">
@@ -424,14 +501,38 @@ scored.sort(comparingDouble(ScoredCandidate::score).reversed()
   </div>
 </section>
 
+<!-- 이력 아카이브 -->
+<section id="archive" class="dark glow">
+  <div class="wrap">
+    <p class="eyebrow rv">Career Archive</p>
+    <h2 class="title rv">해 온 일을 한눈에 봅니다.</h2>
+    <p class="intro rv">팀 · 개인 프로젝트와 과정 중 실습, 그리고 이전 경력입니다. 이름을 누르면 GitHub 저장소로 이동합니다.</p>
+    <div class="glass archive rv">
+      <table>
+        <thead><tr><th>프로젝트 및 업무명</th><th>수행 기간</th><th>역할</th><th>기술 환경</th><th>형태</th></tr></thead>
+        <tbody>
+          <tr><td><a href="https://helpnest.kro.kr" target="_blank" rel="noopener">HelpNest AI 헬프데스크</a></td><td>2026.09 – 2026.11</td><td>AI 자동화 · 메일 · 대시보드 · AWS 배포</td><td>Spring Boot, Spring AI, Next.js, AWS</td><td>3인 팀</td></tr>
+          <tr><td><a href="https://github.com/s-sujin-99/miniproject1-backend/tree/main" target="_blank" rel="noopener">우리동네약값</a></td><td>2026.08 – 2026.09</td><td>기획 · 백엔드 · 데이터 · 추천 로직</td><td>Spring Boot, PostgreSQL, Next.js, Python</td><td>개인</td></tr>
+          <tr><td><a href="https://github.com/s-sujin-99/todo-backend" target="_blank" rel="noopener">Todo 서비스</a></td><td>2026.08 – 2026.09</td><td>백엔드 · 프론트 분리 구현</td><td>Spring Boot, Next.js, TypeScript</td><td>개인</td></tr>
+          <tr><td><a href="https://github.com/s-sujin-99/mallapi" target="_blank" rel="noopener">Mall API · 프론트</a></td><td>2026.08 – 2026.09</td><td>REST API · React 화면</td><td>Spring Boot, React, Vite</td><td>실습</td></tr>
+          <tr><td><a href="https://github.com/s-sujin-99/invoice-web" target="_blank" rel="noopener">Notion 견적서 웹뷰 · PDF</a></td><td>2026.08</td><td>로그인 없는 고유 링크 조회 · PDF 다운로드</td><td>Next.js, TypeScript, Notion API</td><td>개인</td></tr>
+          <tr><td><a href="https://github.com/s-sujin-99/nextjs-supabase-app" target="_blank" rel="noopener">Next.js · Supabase 앱</a></td><td>2026.08</td><td>인증 · DB 연동 웹앱</td><td>Next.js, Supabase</td><td>실습</td></tr>
+          <tr><td><a href="https://github.com/s-sujin-99/boardProject" target="_blank" rel="noopener">Spring 게시판 실습</a></td><td>2026.07</td><td>JDBC · MyBatis · JPA 게시판, Security, 파일 업로드</td><td>Spring Boot, MyBatis, JPA</td><td>실습</td></tr>
+          <tr><td>삼영에스엔씨 제품 디자인</td><td>2021.08 – 2023.02</td><td>모델링 · 렌더링 · 시제품 · 상세페이지 · GUI</td><td>Rhino, KeyShot, 3D 프린팅</td><td>경력</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
 <!-- 이력서 -->
 <section id="resume">
   <div class="wrap">
     <div class="head-row">
-      <div><p class="eyebrow rv"><span class="no">05</span>Résumé</p><h2 class="title rv">이력서</h2></div>
-      <button class="btn print" onclick="window.print()">PDF로 저장 · 인쇄</button>
+      <div><p class="eyebrow rv">Résumé</p><h2 class="title rv">이력서</h2></div>
+      <button class="btn print" type="button" onclick="window.print()">PDF로 저장 · 인쇄</button>
     </div>
-    <div class="resume rv">
+    <div class="card resume rv">
       <h3>인적사항</h3>
       <table><tbody>
         <tr><th>성명</th><td>신수진 (Shin Sujin)</td><th>지원 분야</th><td>백엔드 개발 (신입)</td></tr>
@@ -457,49 +558,55 @@ scored.sort(comparingDouble(ScoredCandidate::score).reversed()
   </div>
 </section>
 
-<!-- 기술 -->
-<section id="skills">
-  <div class="wrap">
-    <p class="eyebrow rv"><span class="no">06</span>Skills</p>
-    <h2 class="title rv">써 본 기술</h2>
-    <div class="skills">
-      <div class="rv"><h3>Backend · AI</h3><div class="chips"><span class="chip">Java 21</span><span class="chip">Spring Boot 4</span><span class="chip">Spring AI</span><span class="chip">Gemini API</span><span class="chip">JPA</span><span class="chip">PostgreSQL</span><span class="chip">Flyway</span><span class="chip">pg_trgm</span><span class="chip">JUnit · Testcontainers</span><span class="chip">Python</span></div></div>
-      <div class="rv" style="--d:100"><h3>Infra · DevOps</h3><div class="chips"><span class="chip">AWS EC2</span><span class="chip">RDS</span><span class="chip">CloudFront</span><span class="chip">Amplify</span><span class="chip">S3</span><span class="chip">SES</span><span class="chip">IAM</span><span class="chip">GitHub Actions</span><span class="chip">systemd</span><span class="chip">Docker Compose</span></div></div>
-      <div class="rv" style="--d:200"><h3>Frontend · Tools</h3><div class="chips"><span class="chip">Next.js 16</span><span class="chip">TypeScript</span><span class="chip">Tailwind · shadcn/ui</span><span class="chip">카카오맵 API</span><span class="chip">Git · PR 리뷰</span><span class="chip">Claude Code</span></div></div>
-    </div>
-  </div>
-</section>
-
 <!-- 연락 -->
-<section id="contact" class="contact dark">
+<section id="contact" class="dark alt glow">
+  <div class="wrap center">
+    <p class="eyebrow rv">Get in Touch</p>
+    <h2 class="title rv">함께 만들고, <span class="grad">끝까지 운영합니다.</span></h2>
+    <p class="intro rv">백엔드 개발자 신입 포지션을 찾고 있습니다. 편하게 연락 주세요.</p>
+  </div>
   <div class="wrap">
-    <p class="eyebrow rv"><span class="no">07</span>Contact</p>
-    <h2 class="rv" style="margin-top:16px">함께 만들고,<br><span>끝까지 운영합니다.</span></h2>
-    <div class="cta rv">
-      <a class="btn solid" href="mailto:t2684258@gmail.com">t2684258@gmail.com</a>
-      <a class="btn line" href="https://github.com/s-sujin-99?tab=repositories" target="_blank" rel="noopener">GitHub ↗</a>
+    <div class="contact-grid">
+      <div class="glass rv">
+        <h3>연락처 및 지원 정보</h3>
+        <p>AI 기능을 서비스에 붙이는 일부터 배포 · 운영 절차를 정리하는 일까지, 팀이 오래 믿고 쓸 수 있는 백엔드를 만들겠습니다.</p>
+        <dl class="infos">
+          <div><dt>이메일 · GitHub</dt><dd>t2684258@gmail.com<br>github.com/s-sujin-99</dd></div>
+          <div><dt>희망 포지션</dt><dd>백엔드 개발자 (신입)<br>Java · Spring Boot</dd></div>
+        </dl>
+      </div>
+      <div class="glass namecard rv" style="--d:100">
+        <h3>신수진</h3>
+        <p class="role">Backend Developer</p>
+        <p>경기도 광주시 거주</p>
+        <a class="btn solid" href="mailto:t2684258@gmail.com">메일 보내기</a>
+      </div>
     </div>
   </div>
 </section>
-<footer class="dark"><div class="wrap">© 2026 신수진 · 이 페이지는 HTML 파일 하나로 만들었습니다.</div></footer>
+<footer class="dark alt">© 2026 Shin Sujin. All rights reserved.</footer>
 
 <script>
-  // 스크롤 등장 · 진행 막대 · 현재 섹션 표시
-  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .15 });
+  // 스크롤 등장 · 진행 막대 · 현재 섹션 표시 · 모바일 메뉴
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
   document.querySelectorAll('.rv').forEach(el => io.observe(el));
 
-  const bar = document.getElementById('bar'), nav = document.querySelector('.nav');
-  const links = [...document.querySelectorAll('.nav a.lnk')];
-  const secs = [...document.querySelectorAll('header, section')];
+  const bar = document.getElementById('bar');
+  const links = [...document.querySelectorAll('.menu a')];
+  const secs = links.map(a => document.querySelector(a.getAttribute('href')));
   const onScroll = () => {
     const h = document.documentElement;
     bar.style.transform = `scaleX(${h.scrollTop / (h.scrollHeight - h.clientHeight)})`;
-    const cur = secs.findLast(s => s.getBoundingClientRect().top <= 80) || secs[0];
-    nav.classList.toggle('on-dark', cur.classList.contains('dark'));
-    links.forEach(a => a.classList.toggle('cur', a.getAttribute('href') === '#' + cur.id));
+    const cur = secs.findLast(s => s.getBoundingClientRect().top <= 100);
+    links.forEach(a => a.classList.toggle('cur', !!cur && a.getAttribute('href') === '#' + cur.id));
   };
   addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+
+  const menu = document.getElementById('menu'), burger = document.querySelector('.burger');
+  const setMenu = open => { menu.classList.toggle('open', open); burger.setAttribute('aria-expanded', open); burger.textContent = open ? '✕' : '☰'; };
+  burger.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
+  links.forEach(a => a.addEventListener('click', () => setMenu(false)));
 </script>
 </body>
 </html>
