@@ -219,34 +219,50 @@
 <!-- 캐릭터 원본: 장면마다 <use href="#me"> 로 불러오고 팔 · 소품만 따로 그린다 -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
-    <radialGradient id="skin" cx="45%" cy="38%" r="70%"><stop offset="0" stop-color="#ffe4d3"/><stop offset="1" stop-color="#f4b99c"/></radialGradient>
-    <linearGradient id="hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9a6444"/><stop offset="1" stop-color="#5c3a28"/></linearGradient>
-    <radialGradient id="iris" cx="50%" cy="70%" r="70%"><stop offset="0" stop-color="#8a5636"/><stop offset="1" stop-color="#2a1a14"/></radialGradient>
+    <radialGradient id="skin" cx="50%" cy="38%" r="68%"><stop offset="0" stop-color="#ffeadf"/><stop offset=".7" stop-color="#fbd2bc"/><stop offset="1" stop-color="#f4b99c"/></radialGradient>
+    <linearGradient id="hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a26b48"/><stop offset="1" stop-color="#6e4630"/></linearGradient>
+    <linearGradient id="hairBack" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6b4330"/><stop offset="1" stop-color="#3e261b"/></linearGradient>
+    <linearGradient id="iris" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2b1910"/><stop offset=".55" stop-color="#6b3b22"/><stop offset="1" stop-color="#d08a4e"/></linearGradient>
+    <radialGradient id="blush"><stop offset="0" stop-color="#ff8fa3" stop-opacity=".6"/><stop offset="1" stop-color="#ff8fa3" stop-opacity="0"/></radialGradient>
     <linearGradient id="hood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2dd4bf"/><stop offset="1" stop-color="#0d9488"/></linearGradient>
     <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#10262a"/><stop offset="1" stop-color="#050d10"/></linearGradient>
     <symbol id="me" viewBox="0 0 200 220">
-      <path d="M48 100 Q40 24 100 24 Q160 24 152 100 Q156 140 160 180 Q162 200 146 204 L54 204 Q38 200 40 180 Q44 140 48 100 Z" fill="url(#hair)"/>
-      <path d="M38 220 Q38 160 100 150 Q162 160 162 220 Z" fill="url(#hood)"/>
-      <ellipse cx="100" cy="153" rx="34" ry="10" fill="#0f766e"/>
-      <path d="M90 156 V178 M110 156 V178" stroke="#ccfbf1" stroke-width="3" stroke-linecap="round"/>
-      <circle cx="90" cy="180" r="3" fill="#ccfbf1"/><circle cx="110" cy="180" r="3" fill="#ccfbf1"/>
-      <text x="100" y="208" text-anchor="middle" font-size="16" font-weight="800" fill="#ccfbf1" font-family="sans-serif">{ }</text>
-      <rect x="90" y="132" width="20" height="22" rx="8" fill="#f4b99c"/>
-      <path d="M52 96 Q42 130 46 165 Q48 188 60 198 Q70 200 70 190 Q64 170 66 140 Q66 118 68 104 Z M148 96 Q158 130 154 165 Q152 188 140 198 Q130 200 130 190 Q136 170 134 140 Q134 118 132 104 Z" fill="url(#hair)"/>
-      <ellipse cx="50" cy="108" rx="9" ry="11" fill="#f4b99c"/><ellipse cx="150" cy="108" rx="9" ry="11" fill="#f4b99c"/>
-      <circle cx="47" cy="120" r="3.2" fill="#fff7ed"/><circle cx="153" cy="120" r="3.2" fill="#fff7ed"/>
-      <circle cx="100" cy="94" r="51" fill="url(#skin)"/>
-      <!-- 앞머리: 오른쪽 가르마에서 왼쪽으로 두껍게 넘겨 눈썹까지 덮음 -->
-      <path d="M42 106 Q34 22 100 22 Q166 22 158 106 Q150 104 148 92 C146 78 138 70 128 68 C110 66 92 72 80 84 Q74 92 66 90 Q58 92 55 106 Z" fill="url(#hair)"/>
-      <path d="M68 72 Q82 52 108 45" stroke="#d29a72" stroke-width="4" fill="none" stroke-linecap="round" opacity=".45"/>
-      <path d="M73 86 Q81 81 89 84 M111 84 Q119 81 127 86" stroke="#5c3a28" stroke-width="2.4" fill="none" stroke-linecap="round"/>
-      <ellipse cx="82" cy="103" rx="7" ry="8.5" fill="url(#iris)"/><ellipse cx="118" cy="103" rx="7" ry="8.5" fill="url(#iris)"/>
-      <path d="M73 98 Q82 91 91 97 M109 97 Q118 91 127 98" stroke="#2a1a14" stroke-width="2.4" fill="none" stroke-linecap="round"/>
-      <circle cx="85" cy="99.5" r="2.6" fill="#fff"/><circle cx="121" cy="99.5" r="2.6" fill="#fff"/>
-      <circle cx="79.5" cy="107" r="1.2" fill="#fff" opacity=".8"/><circle cx="115.5" cy="107" r="1.2" fill="#fff" opacity=".8"/>
-      <path d="M99 112 Q101 114 99 115" stroke="#d98b6c" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-      <ellipse cx="68" cy="115" rx="8" ry="5" fill="#fb7185" opacity=".3"/><ellipse cx="132" cy="115" rx="8" ry="5" fill="#fb7185" opacity=".3"/>
-      <path d="M94 121 Q100 126 106 121" stroke="#9f1239" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+      <!-- 뒷머리: 어깨 뒤로 길게, 끝은 물결 -->
+      <path d="M48 96 C40 40 70 26 100 26 C130 26 160 40 152 96 C156 130 164 168 166 196 Q158 210 146 200 Q136 210 124 200 L76 200 Q64 210 54 200 Q42 210 34 196 C36 168 44 130 48 96 Z" fill="url(#hairBack)"/>
+      <!-- 후드티: 몸통 · 목 뒤로 접힌 후드 · 끈 -->
+      <path d="M36 220 C36 176 62 156 100 154 C138 156 164 176 164 220 Z" fill="url(#hood)"/>
+      <path d="M62 162 C70 144 130 144 138 162 C124 172 76 172 62 162 Z" fill="#0f766e"/>
+      <rect x="90" y="126" width="20" height="32" rx="9" fill="#f4b99c"/>
+      <path d="M90 150 Q100 160 110 150 L110 158 Q100 166 90 158 Z" fill="#e8a487" opacity=".6"/>
+      <path d="M88 162 V184 M112 162 V184" stroke="#ccfbf1" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="88" cy="186" r="3.2" fill="#ccfbf1"/><circle cx="112" cy="186" r="3.2" fill="#ccfbf1"/>
+      <text x="100" y="210" text-anchor="middle" font-size="15" font-weight="800" fill="#ccfbf1" font-family="sans-serif">{ }</text>
+      <!-- 어깨 앞으로 내려온 긴 머리 -->
+      <path d="M50 100 C42 130 44 160 50 184 C54 196 48 204 42 208 C56 210 66 202 68 190 C70 170 64 140 66 110 Z M150 100 C158 130 156 160 150 184 C146 196 152 204 158 208 C144 210 134 202 132 190 C130 170 136 140 134 110 Z" fill="url(#hair)"/>
+      <path d="M56 120 C52 146 56 170 60 190 M144 120 C148 146 144 170 140 190" stroke="#5c3a28" stroke-width="1.3" fill="none" opacity=".45" stroke-linecap="round"/>
+      <!-- 얼굴 -->
+      <path d="M100 40 C132 40 152 62 152 94 C152 124 130 146 100 146 C70 146 48 124 48 94 C48 62 68 40 100 40 Z" fill="url(#skin)"/>
+      <ellipse cx="68" cy="116" rx="12" ry="8" fill="url(#blush)"/><ellipse cx="132" cy="116" rx="12" ry="8" fill="url(#blush)"/>
+      <!-- 눈 -->
+      <path d="M71 102 Q80 93 89 102 Q90 115 80 116 Q70 115 71 102 Z M129 102 Q120 93 111 102 Q110 115 120 116 Q130 115 129 102 Z" fill="#fff"/>
+      <ellipse cx="80.5" cy="106" rx="6.6" ry="8.2" fill="url(#iris)"/><ellipse cx="119.5" cy="106" rx="6.6" ry="8.2" fill="url(#iris)"/>
+      <ellipse cx="80.5" cy="107" rx="2.8" ry="3.6" fill="#1a0f0a"/><ellipse cx="119.5" cy="107" rx="2.8" ry="3.6" fill="#1a0f0a"/>
+      <circle cx="83.2" cy="101.6" r="2.6" fill="#fff"/><circle cx="122.2" cy="101.6" r="2.6" fill="#fff"/>
+      <circle cx="78.3" cy="110.4" r="1.3" fill="#fff" opacity=".85"/><circle cx="117.3" cy="110.4" r="1.3" fill="#fff" opacity=".85"/>
+      <path d="M91 100.5 Q80 90 69.5 101.5 L66 98.5 M109 100.5 Q120 90 130.5 101.5 L134 98.5" stroke="#2a1a14" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M75 116 Q80 117.6 85 116 M125 116 Q120 117.6 115 116" stroke="#c98a6e" stroke-width="1.1" fill="none" stroke-linecap="round" opacity=".7"/>
+      <path d="M73 84 Q80 80.5 87 82.5 M127 84 Q120 80.5 113 82.5" stroke="#6e4630" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+      <!-- 코 · 입 -->
+      <path d="M100 114 q1.6 1.3 0 2.4" stroke="#e09a7c" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+      <path d="M93 121 Q100 130 107 121 Q100 124.5 93 121 Z" fill="#b4234a"/>
+      <path d="M96.5 125 Q100 128.4 103.5 125 Q100 124 96.5 125 Z" fill="#ff8fa3"/>
+      <!-- 앞머리: 왼쪽으로 쓸어 넘긴 세 갈래, 길이를 비슷하게 맞춰 지그재그가 안 생기게 -->
+      <path d="M44 108 C38 50 64 28 100 28 C136 28 162 50 156 108 C152 96 149 86 145 77 Q141 84 132 86 Q127 80 121 76 Q112 85 98 86 Q93 80 87 76 Q78 85 66 86 Q60 82 55 78 C51 86 48 96 47 108 Z" fill="url(#hair)"/>
+      <path d="M108 31 Q104 56 98 84 M126 36 Q128 60 132 84 M86 35 Q78 60 66 84" stroke="#5c3a28" stroke-width="1.2" fill="none" opacity=".4" stroke-linecap="round"/>
+      <path d="M60 60 Q72 46 90 43 M108 42 Q124 43 140 56" stroke="#e0ad86" stroke-width="4.5" fill="none" stroke-linecap="round" opacity=".55"/>
+      <path d="M100 28 C97 15 109 10 113 17 C107 15 103 19 102 28 Z" fill="url(#hair)"/>
+      <!-- 핑크 헤어핀 -->
+      <g transform="rotate(-28 131 58)"><rect x="122" y="55" width="18" height="6.5" rx="3.2" fill="#f0abfc"/><rect x="125" y="56.4" width="7" height="1.6" rx=".8" fill="#fff" opacity=".7"/></g>
     </symbol>
   </defs>
 </svg>
