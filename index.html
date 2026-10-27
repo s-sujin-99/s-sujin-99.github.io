@@ -220,26 +220,33 @@
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <defs>
     <radialGradient id="skin" cx="45%" cy="38%" r="70%"><stop offset="0" stop-color="#ffe4d3"/><stop offset="1" stop-color="#f4b99c"/></radialGradient>
-    <linearGradient id="hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a3428"/><stop offset="1" stop-color="#2a1d17"/></linearGradient>
+    <linearGradient id="hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9a6444"/><stop offset="1" stop-color="#5c3a28"/></linearGradient>
+    <radialGradient id="iris" cx="50%" cy="70%" r="70%"><stop offset="0" stop-color="#8a5636"/><stop offset="1" stop-color="#2a1a14"/></radialGradient>
     <linearGradient id="hood" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2dd4bf"/><stop offset="1" stop-color="#0d9488"/></linearGradient>
     <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#10262a"/><stop offset="1" stop-color="#050d10"/></linearGradient>
     <symbol id="me" viewBox="0 0 200 220">
-      <path d="M46 96 Q40 26 100 26 Q160 26 154 96 L162 200 Q130 210 100 207 Q70 210 38 200 Z" fill="url(#hair)"/>
+      <path d="M48 100 Q40 24 100 24 Q160 24 152 100 Q156 140 160 180 Q162 200 146 204 L54 204 Q38 200 40 180 Q44 140 48 100 Z" fill="url(#hair)"/>
       <path d="M38 220 Q38 160 100 150 Q162 160 162 220 Z" fill="url(#hood)"/>
       <ellipse cx="100" cy="153" rx="34" ry="10" fill="#0f766e"/>
       <path d="M90 156 V178 M110 156 V178" stroke="#ccfbf1" stroke-width="3" stroke-linecap="round"/>
       <circle cx="90" cy="180" r="3" fill="#ccfbf1"/><circle cx="110" cy="180" r="3" fill="#ccfbf1"/>
       <text x="100" y="208" text-anchor="middle" font-size="16" font-weight="800" fill="#ccfbf1" font-family="sans-serif">{ }</text>
       <rect x="90" y="132" width="20" height="22" rx="8" fill="#f4b99c"/>
-      <path d="M52 92 Q42 150 54 204 Q64 210 74 200 Q64 150 68 104 Z M148 92 Q158 150 146 204 Q136 210 126 200 Q136 150 132 104 Z" fill="url(#hair)"/>
+      <path d="M52 96 Q42 130 46 165 Q48 188 60 198 Q70 200 70 190 Q64 170 66 140 Q66 118 68 104 Z M148 96 Q158 130 154 165 Q152 188 140 198 Q130 200 130 190 Q136 170 134 140 Q134 118 132 104 Z" fill="url(#hair)"/>
+      <ellipse cx="50" cy="108" rx="9" ry="11" fill="#f4b99c"/><ellipse cx="150" cy="108" rx="9" ry="11" fill="#f4b99c"/>
+      <circle cx="47" cy="120" r="3.2" fill="#fff7ed"/><circle cx="153" cy="120" r="3.2" fill="#fff7ed"/>
       <circle cx="100" cy="94" r="51" fill="url(#skin)"/>
-      <path d="M49 96 Q48 38 100 36 Q152 38 151 96 Q148 70 128 58 Q112 50 100 56 Q88 50 72 58 Q52 70 49 96 Z" fill="url(#hair)"/>
-      <path d="M100 38 Q98 48 100 56" stroke="#1a120e" stroke-width="2" fill="none" stroke-linecap="round"/>
-      <path d="M74 88 Q82 83 90 88 M110 88 Q118 83 126 88" stroke="#3b2a20" stroke-width="3" fill="none" stroke-linecap="round"/>
-      <ellipse cx="82" cy="102" rx="6.5" ry="8.5" fill="#1f2937"/><ellipse cx="118" cy="102" rx="6.5" ry="8.5" fill="#1f2937"/>
-      <circle cx="84.5" cy="98.5" r="2.4" fill="#fff"/><circle cx="120.5" cy="98.5" r="2.4" fill="#fff"/>
-      <ellipse cx="68" cy="116" rx="8" ry="4" fill="#fb7185" opacity=".45"/><ellipse cx="132" cy="116" rx="8" ry="4" fill="#fb7185" opacity=".45"/>
-      <path d="M93 117 Q100 124 107 117" stroke="#9f1239" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+      <!-- 앞머리: 오른쪽 가르마에서 왼쪽으로 두껍게 넘겨 눈썹까지 덮음 -->
+      <path d="M42 106 Q34 22 100 22 Q166 22 158 106 Q150 104 148 92 C146 78 138 70 128 68 C110 66 92 72 80 84 Q74 92 66 90 Q58 92 55 106 Z" fill="url(#hair)"/>
+      <path d="M68 72 Q82 52 108 45" stroke="#d29a72" stroke-width="4" fill="none" stroke-linecap="round" opacity=".45"/>
+      <path d="M73 86 Q81 81 89 84 M111 84 Q119 81 127 86" stroke="#5c3a28" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+      <ellipse cx="82" cy="103" rx="7" ry="8.5" fill="url(#iris)"/><ellipse cx="118" cy="103" rx="7" ry="8.5" fill="url(#iris)"/>
+      <path d="M73 98 Q82 91 91 97 M109 97 Q118 91 127 98" stroke="#2a1a14" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+      <circle cx="85" cy="99.5" r="2.6" fill="#fff"/><circle cx="121" cy="99.5" r="2.6" fill="#fff"/>
+      <circle cx="79.5" cy="107" r="1.2" fill="#fff" opacity=".8"/><circle cx="115.5" cy="107" r="1.2" fill="#fff" opacity=".8"/>
+      <path d="M99 112 Q101 114 99 115" stroke="#d98b6c" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      <ellipse cx="68" cy="115" rx="8" ry="5" fill="#fb7185" opacity=".3"/><ellipse cx="132" cy="115" rx="8" ry="5" fill="#fb7185" opacity=".3"/>
+      <path d="M94 121 Q100 126 106 121" stroke="#9f1239" stroke-width="2.4" fill="none" stroke-linecap="round"/>
     </symbol>
   </defs>
 </svg>
