@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>신수진 · 백엔드 개발자 포트폴리오</title>
-<meta name="description" content="Java · Spring Boot 백엔드 개발자 신수진의 포트폴리오 겸 이력서. HelpNest AI 자동화 · AWS 배포, 우리동네약값 추천 로직.">
+<meta name="description" content="Java · Spring Boot 백엔드 개발자 신수진의 포트폴리오 겸 이력서. HelpNest AI 자동화 · AWS 배포, 약값알림 추천 로직.">
 <meta property="og:title" content="신수진 · 백엔드 개발자 포트폴리오">
 <meta property="og:description" content="AI를 서비스에 붙이고, 운영까지 책임지는 백엔드 개발자">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='9' fill='%230d9488'/><text x='16' y='22' font-size='15' font-weight='800' text-anchor='middle' fill='white' font-family='sans-serif'>S</text></svg>">
@@ -146,6 +146,7 @@
   .links { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 22px; }
   .links a { font-size: 14px; font-weight: 750; padding: 7px 14px; border-radius: 10px; background: rgba(20,184,166,.15); color: var(--mint); }
   .arch { border-radius: 18px; padding: 24px; background: radial-gradient(500px 300px at 90% 0%, rgba(240,171,252,.14), transparent 60%), #081316; border: 1px solid var(--line); display: flex; flex-direction: column; gap: 10px; align-self: start; }
+  .arch .shot { width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); display: block; margin-bottom: 4px; }
   .arch .t { font-size: 12px; font-weight: 800; letter-spacing: .14em; color: var(--mint); }
   .arch .row { display: grid; grid-template-columns: 96px 1fr; gap: 12px; padding: 11px 14px; border-radius: 12px; background: rgba(255,255,255,.04); border: 1px solid var(--line); font-size: 14.5px; }
   .arch .row span { color: var(--muted); }
@@ -417,12 +418,12 @@
   <div class="wrap">
     <p class="eyebrow rv">About Me</p>
     <h2 class="title rv">숫자로 보는 신수진</h2>
-    <p class="intro rv">3인 팀 프로젝트 HelpNest에서 AI 자동화 · 메일 · 대시보드 · CI · AWS 배포를 맡았고, 개인 프로젝트 우리동네약값에서 공공데이터와 추천 로직을 설계했습니다. 그 전에는 1년 7개월 동안 제품 디자이너로 일하며 만든 제품을 CES · 스마트센서코리아 전시까지 가져갔습니다.</p>
+    <p class="intro rv">3인 팀 프로젝트 HelpNest에서 AI 자동화 · 메일 · 대시보드 · CI · AWS 배포를 맡았고, 미니 프로젝트 약값알림에서 공공데이터 정제와 추천 로직을 설계했습니다. 그 전에는 1년 7개월 동안 제품 디자이너로 일하며 만든 제품을 CES · 스마트센서코리아 전시까지 가져갔습니다.</p>
     <div class="numbers">
       <div class="glass rv"><div class="n">170<small>커밋</small></div><div class="l">HelpNest 본인 커밋 (back 74 · front 57 · docs 39)</div></div>
       <div class="glass rv" style="--d:100"><div class="n">100<small>%</small></div><div class="l">LLM 문의 분류 정확도 (샘플 30건)</div></div>
       <div class="glass rv" style="--d:200"><div class="n">7<small>종</small></div><div class="l">직접 구성한 AWS 자원 (EC2 · RDS · CloudFront · Amplify · S3 · SES · IAM)</div></div>
-      <div class="glass rv" style="--d:300"><div class="n">376<small>만 건</small></div><div class="l">우리동네약값 가격 제보 시드 데이터</div></div>
+      <div class="glass rv" style="--d:300"><div class="n">28.3<small>만 건</small></div><div class="l">약값알림 가격 제보 데이터 (약국 25,757 · 약품 4,779)</div></div>
     </div>
   </div>
 </section>
@@ -504,11 +505,11 @@
       </svg>
       <div class="glass panel rv">
         <h3>Tech Stack</h3>
-        <div class="skill"><div class="row">Backend<span>HelpNest · 우리동네약값</span></div>
+        <div class="skill"><div class="row">Backend<span>HelpNest · 약값알림</span></div>
           <div class="tags"><span class="tag">Java 21</span><span class="tag">Spring Boot 4</span><span class="tag">Spring Security · JWT</span><span class="tag">JPA</span><span class="tag">JUnit · Testcontainers</span></div></div>
         <div class="skill"><div class="row">AI<span>HelpNest</span></div>
           <div class="tags"><span class="tag">Spring AI</span><span class="tag">Gemini API</span><span class="tag">개인정보 마스킹</span></div></div>
-        <div class="skill"><div class="row">Data<span>HelpNest · 우리동네약값</span></div>
+        <div class="skill"><div class="row">Data<span>HelpNest · 약값알림</span></div>
           <div class="tags"><span class="tag">PostgreSQL</span><span class="tag">Flyway</span><span class="tag">pg_trgm</span><span class="tag">Python 시드 변환</span></div></div>
         <div class="skill"><div class="row">Infra · DevOps<span>HelpNest</span></div>
           <div class="tags"><span class="tag">AWS EC2 · RDS</span><span class="tag">CloudFront · Amplify</span><span class="tag">S3 · SES · IAM</span><span class="tag">GitHub Actions</span><span class="tag">systemd</span></div></div>
@@ -544,7 +545,7 @@
           <rect x="290" y="56" width="116" height="74" rx="14" fill="#10262a" stroke="#f0abfc" stroke-opacity=".6"/>
           <path d="M300 112 L330 76 L356 104 L374 86 L396 112 Z" fill="#163036"/>
           <path d="M348 66 a12 12 0 0 1 24 0 c0 10 -12 22 -12 22 c0 0 -12 -12 -12 -22 z" fill="#f0abfc"/><circle cx="360" cy="66" r="4.5" fill="#3b0d44"/>
-          <text x="348" y="148" text-anchor="middle" font-size="13" font-weight="800" fill="#f0abfc" font-family="sans-serif">우리동네약값</text>
+          <text x="348" y="148" text-anchor="middle" font-size="13" font-weight="800" fill="#f0abfc" font-family="sans-serif">약값알림</text>
         </g>
         <use href="#me" x="115" y="14" width="180" height="198"/>
         <!-- 히어로와 같은 노트북 (책상 높이에 맞춰 이동) -->
@@ -604,32 +605,33 @@
 
       <article class="glass show rv">
         <div>
-          <div class="badges"><span class="pill">26.08 – 26.09 · 1인</span><em>개인 프로젝트 (발표는 4인 공동)</em></div>
-          <h3>우리동네약값</h3>
-          <p class="sub">일반의약품 최저가 추천 · 하이미디어아카데미 미니 프로젝트</p>
+          <div class="badges"><span class="pill">26.09.15 – 09.22 · 8일</span><em>개인 개발 (커밋 100%) · 발표 4인 팀</em></div>
+          <h3>약값알림</h3>
+          <p class="sub">약 이름 하나로 오늘 가장 싼 약국을 찾다 · 하이미디어아카데미 미니 프로젝트</p>
           <ul>
-            <li><span class="n">01</span>약국마다 다른 상비약 가격을 <b>사용자 제보</b>로 모아 내 위치 근처 최저가 약국을 추천</li>
-            <li><span class="n">02</span>Python으로 공공데이터(심평원 약국정보 · 식약처 e약은요)를 <b>시드 SQL로 변환</b> — 약국 23,571곳 · 약품 4,784종</li>
-            <li><span class="n">03</span>이상치에 강한 <b>대표가격</b>(IQR 제거 후 중앙값)과 가격 · 거리 · 최신성을 묶은 <b>추천 Score</b> 설계</li>
-            <li><span class="n">04</span>제보가 들어올 때 해당 (약국, 약품)만 다시 계산하는 <b>통계 캐시 테이블</b></li>
-            <li><span class="n">05</span>JWT · Google OAuth2 인증, 가격 제보 · 관리자 통계 API</li>
-            <li><span class="n">06</span>PRD · DATABASE · API · ROADMAP 문서를 코드보다 먼저 확정</li>
+            <li><span class="n">01</span>판매자가격표시제로 약국마다 최대 2배까지 벌어지는 상비약 가격을 <b>사용자 제보</b>로 모아 내 위치 근처 최저가 약국을 추천</li>
+            <li><span class="n">02</span>Python으로 공공데이터(심평원 약국정보 · 식약처 e약은요)를 <b>시드 SQL로 변환</b> — 약국 25,757곳 · 약품 4,779종 · 제보 283,141건</li>
+            <li><span class="n">03</span>이상치에 강한 <b>대표가격</b>(IQR 제거 후 중앙값)과 가격 · 거리 · 최신성을 묶은 <b>추천 Score</b>를 테스트로 고정</li>
+            <li><span class="n">04</span>카카오맵 <b>지도 가격 비교</b>(반경 500m–5km, 추천 · 가격 · 거리순)와 약국별 <b>가격 이력 차트</b></li>
+            <li><span class="n">05</span>제보 즉시 해당 (약국, 약품)만 <b>통계 재계산</b>, 관리자 <b>이상치 플래그</b> 숨김 · 복구, 부분 유니크 인덱스로 중복 제보 차단</li>
+            <li><span class="n">06</span>PRD · DATABASE · API · ROADMAP 문서를 코드보다 먼저 확정, OpenAPI로 프론트 타입 자동 생성</li>
           </ul>
-          <div class="tags"><span class="tag">Spring Boot 4.1</span><span class="tag">PostgreSQL 17</span><span class="tag">Next.js 16</span><span class="tag">Python</span><span class="tag">카카오맵</span></div>
+          <div class="tags"><span class="tag">Spring Boot 4.1</span><span class="tag">PostgreSQL 17 · pg_trgm</span><span class="tag">Flyway</span><span class="tag">Next.js 16</span><span class="tag">Python</span><span class="tag">카카오맵</span></div>
           <div class="links">
-            <a href="https://github.com/s-sujin-99/miniProject1" target="_blank" rel="noopener">docs ↗</a>
+            <a href="https://github.com/s-sujin-99/miniProject1/tree/main" target="_blank" rel="noopener">docs ↗</a>
             <a href="https://github.com/s-sujin-99/miniproject1-backend/tree/main" target="_blank" rel="noopener">back ↗</a>
             <a href="https://github.com/s-sujin-99/miniproject1-frontend/tree/main" target="_blank" rel="noopener">front ↗</a>
           </div>
         </div>
         <div class="arch">
-          <p class="t">RECOMMENDATION SCORE</p>
+          <p class="t">SEARCH · MAP</p>
+          <img class="shot" src="img/yak-search.jpg" width="960" height="600" alt="약값알림 검색 결과: 최저가 추천 약국 목록과 카카오맵 가격 말풍선" loading="lazy">
           <div class="row"><b>0.60</b><span>가격 · 반경 안 후보끼리 min-max 정규화</span></div>
           <div class="row"><b>0.25</b><span>거리 · Haversine, 반경 R 대비</span></div>
           <div class="row"><b>0.15</b><span>최신성 · 반감기 30일</span></div>
           <div class="row"><b>대표가격</b><span>90일 제보 → IQR 이상치 제거 → 중앙값</span></div>
-          <p class="big">376만 건</p>
-          <p class="cap">가격 제보 시드 데이터 · 반경 500m–5km 지도 비교</p>
+          <p class="big">283,141</p>
+          <p class="cap">가격 제보 데이터 · 이상치 1,114건 자동 플래그</p>
         </div>
       </article>
     </div>
@@ -739,7 +741,7 @@ scored.sort(comparingDouble(ScoredCandidate::score).reversed()
         <thead><tr><th>프로젝트 및 업무명</th><th>수행 기간</th><th>역할</th><th>기술 환경</th><th>형태</th></tr></thead>
         <tbody>
           <tr><td><a href="https://helpnest.kro.kr" target="_blank" rel="noopener">HelpNest AI 헬프데스크</a></td><td>2026.09 – 2026.11</td><td>AI 자동화 · 메일 · 대시보드 · AWS 배포</td><td>Spring Boot, Spring AI, Next.js, AWS</td><td>3인 팀</td></tr>
-          <tr><td><a href="https://github.com/s-sujin-99/miniproject1-backend/tree/main" target="_blank" rel="noopener">우리동네약값</a></td><td>2026.08 – 2026.09</td><td>기획 · 백엔드 · 데이터 · 추천 로직</td><td>Spring Boot, PostgreSQL, Next.js, Python</td><td>개인</td></tr>
+          <tr><td><a href="https://github.com/s-sujin-99/miniproject1-backend/tree/main" target="_blank" rel="noopener">약값알림</a></td><td>2026.09.15 – 09.22</td><td>기획 · 백엔드 · 데이터 · 추천 로직</td><td>Spring Boot, PostgreSQL, Next.js, Python</td><td>개인</td></tr>
           <tr><td><a href="https://github.com/s-sujin-99/todo-backend" target="_blank" rel="noopener">Todo 서비스</a></td><td>2026.08 – 2026.09</td><td>백엔드 · 프론트 분리 구현</td><td>Spring Boot, Next.js, TypeScript</td><td>개인</td></tr>
           <tr><td><a href="https://github.com/s-sujin-99/mallapi" target="_blank" rel="noopener">Mall API · 프론트</a></td><td>2026.08 – 2026.09</td><td>REST API · React 화면</td><td>Spring Boot, React, Vite</td><td>실습</td></tr>
           <tr><td><a href="https://github.com/s-sujin-99/invoice-web" target="_blank" rel="noopener">Notion 견적서 웹뷰 · PDF</a></td><td>2026.08</td><td>로그인 없는 고유 링크 조회 · PDF 다운로드</td><td>Next.js, TypeScript, Notion API</td><td>개인</td></tr>
@@ -774,7 +776,7 @@ scored.sort(comparingDouble(ScoredCandidate::score).reversed()
 
       <h3>교육 이수</h3>
       <table><thead><tr><th>기간</th><th>기관</th><th>과정</th><th>비고</th></tr></thead><tbody>
-        <tr><td>2026.05 – 2026.11</td><td>하이미디어아카데미</td><td>자바와 생성형AI를 활용한 차세대 CRM플랫폼개발 6기</td><td>2026.11.04 수료 예정 · HelpNest · 우리동네약값</td></tr>
+        <tr><td>2026.05 – 2026.11</td><td>하이미디어아카데미</td><td>자바와 생성형AI를 활용한 차세대 CRM플랫폼개발 6기</td><td>2026.11.04 수료 예정 · HelpNest · 약값알림</td></tr>
       </tbody></table>
 
       <h3>경력</h3>
