@@ -81,11 +81,11 @@ a:hover .folder{translate:0 calc(var(--b)*-2)}
 .mini:hover{color:var(--mint)}
 .mini .folder{--w:clamp(72px,7.4vw,140px)}
 .mini.m1{left:9%;top:40%}.mini.m2{right:9%;top:19%}.mini.m3{right:20%;top:60%}
-.big{position:absolute;left:0;right:0;bottom:-.12em;font:700 min(11vw,200px)/1 var(--f-big);white-space:nowrap;text-align:center;z-index:1;user-select:none;letter-spacing:-.02em}
+.big{position:absolute;left:0;right:0;bottom:.04em;font:700 min(11vw,200px)/1 var(--f-big);white-space:nowrap;text-align:center;z-index:1;user-select:none;letter-spacing:-.02em}
 .big span{display:inline-block;color:var(--text);animation:rise .6s steps(4) both}
 .big .m{color:var(--mint)}.big .p{color:var(--pink)}
 .big .o{color:transparent;-webkit-text-stroke:var(--b) var(--mint)}
-.big .u{color:var(--mint);animation:rise .6s steps(4) both,blink 1s steps(1) 1s infinite}
+.big .u{position:absolute;color:var(--mint);animation:rise .6s steps(4) both,blink 1s steps(1) 1s infinite}
 .big span:nth-child(2){animation-delay:.05s}.big span:nth-child(3){animation-delay:.1s}.big span:nth-child(4){animation-delay:.15s}.big span:nth-child(5){animation-delay:.2s}.big span:nth-child(6){animation-delay:.25s}.big span:nth-child(7){animation-delay:.3s}.big span:nth-child(8){animation-delay:.35s}.big span:nth-child(9){animation-delay:.4s}
 @keyframes rise{from{transform:translateY(50%);opacity:0}}
 @media (max-width:760px){
@@ -338,10 +338,11 @@ a:hover .folder{translate:0 calc(var(--b)*-2)}
         </dl></div>
         <div class="blk rv" style="--i:2"><h4>TRAINING</h4><dl>
           <div><dt>2026.05 – 11</dt><dd>하이미디어아카데미<small>자바와 생성형AI를 활용한 차세대 CRM플랫폼개발 6기 · 11.04 수료 예정</small></dd></div>
+          <div><dt>2023.09 – 24.08</dt><dd>메가스터디IT아카데미<small>Java 풀스택 웹 개발 · 8개월 주말 과정 수료 · Spring Boot · JPA · MyBatis · JSP · 팀 프로젝트로 기획부터 배포까지</small></dd></div>
         </dl></div>
         <div class="blk rv" style="--i:3"><h4>PROJECTS</h4><dl>
           <div><dt>2026.09 – 11</dt><dd>HelpNest AI 헬프데스크<small>3인 팀 · AI 자동화 · 메일 · 대시보드 · CI · AWS 배포</small></dd></div>
-          <div><dt>2026.09.15 – 22</dt><dd>약값알림<small>개인 개발 · 발표 4인 팀 · 공공데이터 정제 · 추천 Score · 대표가격</small></dd></div>
+          <div><dt>2026.09.15 – 22</dt><dd>약값알림<small>개인 개발 · 발표 4인 팀 · 공공데이터 정제 · 추천 Score · 대표가격 · Render · Neon · Vercel 배포</small></dd></div>
         </dl></div>
         <div class="blk rv" style="--i:4"><h4>EXPERIENCE</h4><dl>
           <div><dt>2021.08 – 23.02</dt><dd>삼영에스엔씨 제품 디자인 · 3D 모델링<small>공기질 측정기(AQ-200) CES 전시 확정 · 2022 스마트센서코리아 전시</small></dd></div>
@@ -557,7 +558,7 @@ public void retryFailed() {
   <div class="in tops" style="width:100%"><p>약 이름 하나로<br>오늘 가장 싼 약국을 찾다</p><ul><li>PLANNING</li><li>BACKEND</li><li>PUBLIC DATA</li><li>RECOMMENDATION</li></ul></div>
   <div class="in" style="width:100%">
     <h2 class="logo ko rv">약값<i>알림</i></h2>
-    <p class="meta rv"><span><b>DATE</b>26.09.15 – 09.22 (8일)</span><span><b>TOOL</b>Spring Boot 4.1 / PostgreSQL 17 / Next.js 16 / Python / 카카오맵</span><span><b>WORK</b>개인 개발 · 커밋 100% · 발표 4인 팀</span></p>
+    <p class="meta rv"><span><b>DATE</b>26.09.15 – 09.22 (8일)</span><span><b>TOOL</b>Spring Boot 4.1 / PostgreSQL 17 / Next.js 16 / Python / 카카오맵</span><span><b>DEPLOY</b>Render (Docker) / Neon / Vercel</span><span><b>WORK</b>개인 개발 · 커밋 100% · 발표 4인 팀</span></p>
     <div class="btns rv"><a class="btn p" href="https://yakgap-alrim.vercel.app" target="_blank" rel="noopener">▶ Live</a><a class="btn" href="https://github.com/s-sujin-99/miniproject1-backend/tree/main" target="_blank" rel="noopener">back ↗</a><a class="btn" href="https://github.com/s-sujin-99/miniproject1-frontend/tree/main" target="_blank" rel="noopener">front ↗</a><a class="btn" href="https://github.com/s-sujin-99/miniProject1/tree/main" target="_blank" rel="noopener">docs ↗</a></div>
   </div>
 </section>
@@ -655,7 +656,7 @@ scored.sort(comparingDouble(ScoredCandidate::score).reversed()
       <thead><tr><th>PROJECT</th><th>DATE</th><th>ROLE</th><th>STACK</th><th>TYPE</th></tr></thead>
       <tbody>
         <tr><td><a href="https://helpnest.kro.kr" target="_blank" rel="noopener">HelpNest AI 헬프데스크 ↗</a></td><td>2026.09 – 11</td><td>AI 자동화 · 메일 · 대시보드 · AWS 배포</td><td>Spring Boot, Spring AI, Next.js, AWS</td><td>TEAM 3</td></tr>
-        <tr><td><a href="https://yakgap-alrim.vercel.app" target="_blank" rel="noopener">약값알림 ↗</a></td><td>2026.09.15 – 22</td><td>기획 · 백엔드 · 데이터 · 추천 로직</td><td>Spring Boot, PostgreSQL, Next.js, Python</td><td>SOLO</td></tr>
+        <tr><td><a href="https://yakgap-alrim.vercel.app" target="_blank" rel="noopener">약값알림 ↗</a></td><td>2026.09.15 – 22</td><td>기획 · 백엔드 · 데이터 · 추천 로직</td><td>Spring Boot, PostgreSQL, Next.js, Python, Render, Neon, Vercel</td><td>SOLO</td></tr>
         <tr><td><a href="https://github.com/s-sujin-99/todo-backend" target="_blank" rel="noopener">Todo 서비스 ↗</a></td><td>2026.08 – 09</td><td>백엔드 · 프론트 분리 구현</td><td>Spring Boot, Next.js, TypeScript</td><td>SOLO</td></tr>
         <tr><td><a href="https://github.com/s-sujin-99/invoice-web" target="_blank" rel="noopener">Notion 견적서 웹뷰 · PDF ↗</a></td><td>2026.08</td><td>고유 링크 조회 · PDF 다운로드</td><td>Next.js, TypeScript, Notion API</td><td>SOLO</td></tr>
         <tr><td><a href="https://github.com/s-sujin-99/mallapi" target="_blank" rel="noopener">Mall API · 프론트 ↗</a></td><td>2026.08 – 09</td><td>REST API · React 화면</td><td>Spring Boot, React, Vite</td><td>PRACTICE</td></tr>
