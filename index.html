@@ -214,6 +214,7 @@ a:hover .folder{translate:0 calc(var(--b)*-2)}
 .shapes .s{display:grid;gap:8px}
 .shapes .s b{font:700 clamp(34px,3.8vw,52px)/1 var(--f-big);color:var(--c)}
 .shapes .s span{font-size:15px;color:var(--text-2)}
+.pct{font-family:var(--f-px);font-style:normal;font-size:.8em;line-height:0}
 .nlist{display:grid;max-width:1000px}
 .nlist li{display:grid;grid-template-columns:40px 170px minmax(0,1fr);gap:18px;align-items:center;padding:16px 0;border-bottom:var(--b) dotted var(--line);font-size:16px}
 .nlist li i{font:700 15px/32px var(--f-big);width:32px;height:32px;background:var(--panel-2);color:var(--mint);text-align:center;font-style:normal}
@@ -485,7 +486,7 @@ a:hover .folder{translate:0 calc(var(--b)*-2)}
     <div class="rv"><p class="lbl">Implementation</p><p class="t">직접 구현한 여섯 가지</p></div>
     <div class="shapes">
       <div class="s rv" style="--c:var(--mint)"><b>170</b><span>본인 커밋</span></div>
-      <div class="s rv" style="--c:var(--pink);--i:1"><b>100%</b><span>분류 정확도 (30건)</span></div>
+      <div class="s rv" style="--c:var(--pink);--i:1"><b>100<i class="pct">%</i></b><span>분류 정확도 (30건)</span></div>
       <div class="s rv" style="--c:var(--yellow);--i:2"><b>4종</b><span>메일 템플릿</span></div>
       <div class="s rv" style="--c:var(--orange);--i:3"><b>3회</b><span>실패 메일 재시도</span></div>
       <div class="s rv" style="--c:var(--blue);--i:4"><b>7종</b><span>AWS 자원</span></div>
