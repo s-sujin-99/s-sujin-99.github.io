@@ -126,6 +126,7 @@ a:hover .folder{translate:0 calc(var(--b)*-2)}
 .toc a{display:grid;justify-items:center;gap:14px;text-decoration:none;text-align:center}
 .toc .folder{--w:clamp(104px,9vw,136px)}
 .toc b{font:700 18px/1.3 var(--f-big);color:var(--mint)}
+.toc b i{font-family:var(--f-px);font-style:normal}
 .toc a:hover b{color:var(--pink)}
 .toc small{display:block;font-size:15px;color:var(--text-2);margin-top:4px}
 .toc a:nth-child(4){grid-column:1/2;justify-self:end;margin-right:-30%}
@@ -137,7 +138,7 @@ a:hover .folder{translate:0 calc(var(--b)*-2)}
 .pcover .tops{display:flex;justify-content:space-between;gap:24px;font-size:15px;line-height:1.8;color:var(--text-2);position:relative;z-index:2}
 .pcover .tops ul{text-align:right;font-family:var(--f-big);color:var(--mint)}
 .mosaic{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:5%;z-index:0}
-.mosaic img{width:20%;height:auto;aspect-ratio:18/25;opacity:.75;animation:step 3s steps(2) infinite}
+.mosaic img{width:20%;height:auto;aspect-ratio:18/25;opacity:.4;animation:step 3s steps(2) infinite}
 .mosaic img:nth-child(2){animation-delay:-1s}.mosaic img:nth-child(3){animation-delay:-2s}
 @keyframes step{50%{translate:0 -12px}}
 .pcover::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,rgba(6,12,14,.55) 0 2px,transparent 2px 4px),linear-gradient(180deg,rgba(6,12,14,.1),rgba(6,12,14,.15) 40%,rgba(6,12,14,.92));z-index:1}
@@ -169,13 +170,13 @@ a:hover .folder{translate:0 calc(var(--b)*-2)}
 .dflow{margin-top:22px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;position:relative;text-align:center}
 .dflow::before{content:"";position:absolute;left:12%;right:12%;top:14px;height:var(--b);background:repeating-linear-gradient(90deg,var(--line) 0 8px,transparent 8px 16px)}
 .dflow li{position:relative;display:grid;gap:6px;justify-items:center}
-.dflow .n{width:32px;height:32px;background:var(--mint);color:var(--bg);font:700 16px/32px var(--f-big);margin-bottom:6px}
+.dflow .n{width:32px;height:32px;background:var(--mint);color:var(--bg);font:700 16px/32px var(--f-px);margin-bottom:6px}
 .dflow b{font-size:17px}
 .dflow span{font-size:14px;color:var(--text-2);line-height:1.7}
 @media (max-width:640px){.dflow{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:28px}.dflow::before{display:none}}
 /* 픽셀 원 (계단식) */
 .venn{margin-top:24px;display:flex;align-items:center;flex-wrap:wrap;gap:12px}
-.venn .c{width:clamp(120px,11vw,156px);aspect-ratio:1;display:grid;place-content:center;text-align:center;font:700 17px/1.4 var(--f-big);background:var(--panel-2);color:var(--text);clip-path:polygon(30% 0,70% 0,70% 6%,82% 6%,82% 12%,88% 12%,88% 18%,94% 18%,94% 30%,100% 30%,100% 70%,94% 70%,94% 82%,88% 82%,88% 88%,82% 88%,82% 94%,70% 94%,70% 100%,30% 100%,30% 94%,18% 94%,18% 88%,12% 88%,12% 82%,6% 82%,6% 70%,0 70%,0 30%,6% 30%,6% 18%,12% 18%,12% 12%,18% 12%,18% 6%,30% 6%)}
+.venn .c{width:clamp(120px,11vw,156px);aspect-ratio:1;display:grid;place-content:center;text-align:center;font:400 17px/1.4 var(--f-big);background:var(--panel-2);color:var(--text);clip-path:polygon(30% 0,70% 0,70% 6%,82% 6%,82% 12%,88% 12%,88% 18%,94% 18%,94% 30%,100% 30%,100% 70%,94% 70%,94% 82%,88% 82%,88% 88%,82% 88%,82% 94%,70% 94%,70% 100%,30% 100%,30% 94%,18% 94%,18% 88%,12% 88%,12% 82%,6% 82%,6% 70%,0 70%,0 30%,6% 30%,6% 18%,12% 18%,12% 12%,18% 12%,18% 6%,30% 6%)}
 .venn .c small{display:block;font:400 13px/1.5 var(--f-px);color:var(--text-2)}
 .venn .c.dark{background:var(--mint);color:var(--bg)}
 .venn .c.dark small{color:var(--bg)}
@@ -212,12 +213,12 @@ a:hover .folder{translate:0 calc(var(--b)*-2)}
 /* 숫자 + 번호 목록 */
 .shapes{display:flex;flex-wrap:wrap;gap:clamp(20px,3vw,48px);align-items:end;margin:30px 0 32px}
 .shapes .s{display:grid;gap:8px}
-.shapes .s b{font:700 clamp(34px,3.8vw,52px)/1 var(--f-big);color:var(--c)}
+.shapes .s b{font:700 clamp(34px,3.8vw,52px)/1 var(--f-px);color:var(--c)}
 .shapes .s span{font-size:15px;color:var(--text-2)}
 .pct{font-family:var(--f-px);font-style:normal;font-size:.8em;line-height:0}
 .nlist{display:grid;max-width:1000px}
 .nlist li{display:grid;grid-template-columns:40px 170px minmax(0,1fr);gap:18px;align-items:center;padding:16px 0;border-bottom:var(--b) dotted var(--line);font-size:16px}
-.nlist li i{font:700 15px/32px var(--f-big);width:32px;height:32px;background:var(--panel-2);color:var(--mint);text-align:center;font-style:normal}
+.nlist li i{font:700 15px/32px var(--f-px);width:32px;height:32px;background:var(--panel-2);color:var(--mint);text-align:center;font-style:normal}
 .nlist li b{font-weight:700}
 .nlist li span{color:var(--text-2)}
 @media (max-width:640px){.nlist li{grid-template-columns:40px minmax(0,1fr)}.nlist li span{grid-column:2}}
@@ -373,11 +374,11 @@ a:hover .folder{translate:0 calc(var(--b)*-2)}
   <div class="in">
     <div class="ptitle rv"><svg class="folder" viewBox="0 0 16 13" aria-hidden="true"><use class="c" href="#pf" y="1" width="16" height="12"/><use class="o" href="#pf-open" width="16" height="13"/></svg><h2>Contents</h2><svg class="cur" viewBox="0 0 11 17" aria-hidden="true"><use href="#cursor" width="11" height="17"/></svg></div>
     <div class="toc">
-      <a class="rv" href="#helpnest"><svg class="folder" viewBox="0 0 16 13" aria-hidden="true"><use class="c" href="#pf" y="1" width="16" height="12"/><use class="o" href="#pf-open" width="16" height="13"/></svg><span><b>01 HELPNEST</b><small>AI Helpdesk · Backend · AWS</small></span></a>
-      <a class="rv" style="--i:1" href="#hn-solve"><svg class="folder" viewBox="0 0 16 13" aria-hidden="true"><use class="c" href="#pf" y="1" width="16" height="12"/><use class="o" href="#pf-open" width="16" height="13"/></svg><span><b>02 PROBLEM SOLVING</b><small>운영에서 찾은 문제 4건</small></span></a>
-      <a class="rv" style="--i:2" href="#yak"><svg class="folder" viewBox="0 0 16 13" aria-hidden="true"><use class="c" href="#pf" y="1" width="16" height="12"/><use class="o" href="#pf-open" width="16" height="13"/></svg><span><b>03 약값알림</b><small>Recommendation · Public Data</small></span></a>
-      <a class="rv" style="--i:3" href="#archive"><svg class="folder" viewBox="0 0 16 13" aria-hidden="true"><use class="c" href="#pf" y="1" width="16" height="12"/><use class="o" href="#pf-open" width="16" height="13"/></svg><span><b>04 ARCHIVE</b><small>실습 · 개인 저장소</small></span></a>
-      <a class="rv" style="--i:4" href="#contact"><svg class="folder" viewBox="0 0 16 13" aria-hidden="true"><use class="c" href="#pf" y="1" width="16" height="12"/><use class="o" href="#pf-open" width="16" height="13"/></svg><span><b>05 CONTACT</b><small>함께 일하기</small></span></a>
+      <a class="rv" href="#helpnest"><svg class="folder" viewBox="0 0 16 13" aria-hidden="true"><use class="c" href="#pf" y="1" width="16" height="12"/><use class="o" href="#pf-open" width="16" height="13"/></svg><span><b><i>01</i> HELPNEST</b><small>AI Helpdesk · Backend · AWS</small></span></a>
+      <a class="rv" style="--i:1" href="#hn-solve"><svg class="folder" viewBox="0 0 16 13" aria-hidden="true"><use class="c" href="#pf" y="1" width="16" height="12"/><use class="o" href="#pf-open" width="16" height="13"/></svg><span><b><i>02</i> PROBLEM SOLVING</b><small>운영에서 찾은 문제 4건</small></span></a>
+      <a class="rv" style="--i:2" href="#yak"><svg class="folder" viewBox="0 0 16 13" aria-hidden="true"><use class="c" href="#pf" y="1" width="16" height="12"/><use class="o" href="#pf-open" width="16" height="13"/></svg><span><b><i>03</i> 약값알림</b><small>Recommendation · Public Data</small></span></a>
+      <a class="rv" style="--i:3" href="#archive"><svg class="folder" viewBox="0 0 16 13" aria-hidden="true"><use class="c" href="#pf" y="1" width="16" height="12"/><use class="o" href="#pf-open" width="16" height="13"/></svg><span><b><i>04</i> ARCHIVE</b><small>실습 · 개인 저장소</small></span></a>
+      <a class="rv" style="--i:4" href="#contact"><svg class="folder" viewBox="0 0 16 13" aria-hidden="true"><use class="c" href="#pf" y="1" width="16" height="12"/><use class="o" href="#pf-open" width="16" height="13"/></svg><span><b><i>05</i> CONTACT</b><small>함께 일하기</small></span></a>
     </div>
   </div>
 </section>
